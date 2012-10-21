@@ -24,8 +24,19 @@ ActiveRecord::Schema.define(:version => 20121017011222) do
     t.string  "UserID"
     t.string  "Password"
     t.string  "UserName"
+    t.string  "EMailAddress"
     t.integer "AuthorizationLevel"
     t.integer "FaildAttempts"
+  end
+
+  create_table "file", :force => true do |t|
+    t.integer "FileIndex"
+    t.string  "FileName"
+    t.string  "Description"
+    t.binary  "Contents"
+    t.string  "Owner"
+    t.integer "AuthorizationLevel"
+   string t.timestamps
   end
 
 end
