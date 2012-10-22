@@ -9,3 +9,4 @@ class User
     @FailedAttempts = attributes[:FailedAttempts]
     @Email = attributes[:Email]
   end
+end
