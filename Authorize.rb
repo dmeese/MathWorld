@@ -5,7 +5,7 @@ is authorized to execute a particular function.
 =end
 
 require 'set'
-require 'User'
+require './User.rb'
 
 module Security
   ADD_USER = 1
@@ -18,6 +18,11 @@ module Security
   EDIT_ANY_FILE_ACCESS = 8
   MAX_FUNCTION = 9
 
+  GUEST_FUNCTIONS = Set[VIEW_PUBLIC_FILE]
+  STUDENT_FUNCTIONS = Set[VIEW_PRIVATE_FILE]
+  INSTRUCTOR_FUNCTIONS = Set[UPLOAD_FILE, EDIT_OWN_FILE_ACCESS]
+  ADMIN_FUNCTIONS = Set[ADD_USER, DELETE_USER, VIEW_USER, EDIT_ANY_FILE_ACCESS]
+
   #Authorized returns true if the passed-in user is authorized for the particular function
   #false otherwise
   def Authorized(user, function)
@@ -25,11 +30,6 @@ module Security
 
     return false if function <=0 # return false on out-of-range function codes
     return false if function >= MAX_FUNCTION    
-
-    GUEST_FUNCTIONS = Set[VIEW_PUBLIC_FILE]
-    STUDENT_FUNCTIONS = Set[VIEW_PRIVATE_FILE]
-    INSTRUCTOR_FUNCTIONS = Set[UPLOAD_FILE, EDIT_OWN_FILE_ACCESS]
-    ADMIN_FUNCTIONS = Set[ADD_USER, DELETE_USER, VIEW_USER, EDIT_ANY_FILE_ACCESS]
 
     if GUEST_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 1 then return true
     elsif STUDENT_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 2 then return true
