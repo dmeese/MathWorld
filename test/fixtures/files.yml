@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  FileIndex: 1
+  FileName: MyString
+  Description: MyString
+  Contents: 
+  Owner: MyString
+  AuthorizationLevel: 1
+
+two:
+  FileIndex: 1
+  FileName: MyString
+  Description: MyString
+  Contents: 
+  Owner: MyString
+  AuthorizationLevel: 1

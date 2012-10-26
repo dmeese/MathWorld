@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026013848) do
+ActiveRecord::Schema.define(:version => 20121026014549) do
+
+  create_table "files", :force => true do |t|
+    t.integer  "FileIndex"
+    t.string   "FileName"
+    t.string   "Description"
+    t.binary   "Contents"
+    t.string   "Owner"
+    t.integer  "AuthorizationLevel"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.integer  "user_id"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "SessionID"
@@ -28,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20121026013848) do
     t.integer  "FaildAttempts"
     t.integer  "Salt"
     t.datetime "created_on"
+    t.datetime "updated_on"
   end
 
 end
