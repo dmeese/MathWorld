@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026014549) do
+ActiveRecord::Schema.define(:version => 20121027203846) do
 
-  create_table "files", :force => true do |t|
+  create_table "documents", :force => true do |t|
     t.integer  "FileIndex"
     t.string   "FileName"
     t.string   "Description"
