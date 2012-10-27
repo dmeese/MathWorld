@@ -13,7 +13,7 @@ the database CRUD
 class File < ActiveRecord::Base
   attr_accessible :AuthorizationLevel, :Contents, :Description, :FileName, :Owner
   attr_readable :FileIndex #FileIndex is assigned by the backend, and is never settable
-  belongs_to: user, :foreign_key => "UserID"
+  belongs_to: user, :foreign_key => UserID
 
   #initialize is Ruby's ctor
   def initialize(attribute = {})

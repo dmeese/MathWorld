@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :UserId, :AuthorizationLevel, :FailedAttempts, :Email
   attr_reader :UserIndex
-  has_many :files, :foreign_key => "Owner"
+
   #initialize is Ruby's ctor
   def initialize(attribute = {})
     @UserIndex = attributes[:UserIndex]
