@@ -1,4 +1,12 @@
 MathWorld::Application.routes.draw do
+  get "math_content/public"
+
+  get "math_content/students"
+
+  get "math_content/teachers"
+
+  get "user_mgr/admin"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
