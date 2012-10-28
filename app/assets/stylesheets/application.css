@@ -30,10 +30,22 @@ body {
 	background: #f0f0f0;
 }
 
+h1 {
+	font-size: 36px;
+	line-height: 36px;
+	padding: 2px 0;
+}
+
 h2 {
 	font-size: 28px;
 	line-height: 44px;
 	padding: 22px 0;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 20px;
+	padding: 0px 0;
 }
 
 p {
@@ -44,7 +56,7 @@ nav {
 	position: absolute;
 	left: 0;
 	width: 100%;
-	background: url("nav_background");
+	background: url("nav_background.png");
 }
 
 nav ul {
