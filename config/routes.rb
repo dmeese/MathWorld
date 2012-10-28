@@ -1,4 +1,7 @@
 MathWorld::Application.routes.draw do
+  
+  get "welcome/login"
+
   get "welcome/index"
 
   get "math_content/public"

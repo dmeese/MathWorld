@@ -7,6 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<h1>Page Title</h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href ="#">Nav1</a><li>
+			<li><a href ="#">Nav2</a><li>
+			<li><a href ="#">Nav3</a><li>
+			<li><a href ="#">Login</a><li>
+		</ul>
+	</nav>
+	<section id="intro">
+		<!-- Introduction of page - may need to be somewhere else or it may need to be passed as a variable -->
+		<header>
+			<h2>Welcome to Mathworld</h2>
+		</header>
+		<p>This part is from layouts/application.html.erb</p>
+		<p>Mathworld is a prototype web application for sharing math educational content, and is intended as a demonstration of a secure capability to provide multiple login contexts and allow for modification of content.<p>
+	</section>
+	<section>
+		<!-- Main Content Area-->
+	</section>
+	<aside>
+		<!-- Sidebar -->
+	</aside>
+	<footer>
+		<!-- footer -->
+	</footer>
+
 
 <%= yield %>
 
