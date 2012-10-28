@@ -29,7 +29,17 @@ class User < ActiveRecord::Base
 
   #self makes this a class method.  This should return an initialized User object
   # on successful authentication, and nil on failure.
-  def self.authenticate_safely(userId, password)
-    where("userId = ? AND password = ?", userId, Password.create(password)).first
+  def self.authenticate(userId, password)
+    user = where("userId = ?", userId).first
+    passwordhash = Password.new(user.Password)
+    if passwordhash == password
+    	return user
+    else
+    	return nil
+    end
+  end
+
+  def Password=(secret)
+  	self[:password] = Password.create(secret)
   end
 end
