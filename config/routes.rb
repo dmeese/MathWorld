@@ -8,7 +8,7 @@ MathWorld::Application.routes.draw do
 
   get "math_content/authUser"
 
-  get "user_mgr/admin"
+  get "user_mgr/adminIface"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

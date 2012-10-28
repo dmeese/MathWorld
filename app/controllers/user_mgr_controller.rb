@@ -1,6 +1,6 @@
 class UserMgrController < ApplicationController
   layout "adminLayout"
 
-  def admin
+  def adminIface
   end
 end
