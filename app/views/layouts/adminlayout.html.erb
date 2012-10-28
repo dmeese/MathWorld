@@ -25,10 +25,22 @@
 		<!-- Introduction of page - Whatever goes in here is in the green box -->
 		<%= yield %>  <!-- This pulls from the view and places it here -->
 	</section>
-	
+
+	<aside>
+		<section>
+			<header>
+				<h3>Actions</h3>
+			</header>
+			<ul>
+				<li><a href="#">Add User</a></li>
+				<li><a href="#">Delete User</a></li>
+				<li><a href="#">Edit User</a></li>
+			</ul>
+		</section>
+	</aside>
 
 	<section>
-		<p>This is from layouts/application.html.erb, and should only show if the correct layout is not identified</p>
+		<p>This is from adminLayout</p>
 	</section>	
 
 	<footer>

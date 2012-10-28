@@ -6,9 +6,7 @@ MathWorld::Application.routes.draw do
 
   get "math_content/public"
 
-  get "math_content/students"
-
-  get "math_content/teachers"
+  get "math_content/authUser"
 
   get "user_mgr/admin"
 
