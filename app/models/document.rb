@@ -25,6 +25,9 @@ from us, letting us focus on just what we want to do without dealing with
 the database CRUD
 =end
 
+# currently, the default ActiveRecord functionality supplied by Rails does
+# everything we need.  We may need to revisit in the future, but this will do
+# for now
 class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
 
