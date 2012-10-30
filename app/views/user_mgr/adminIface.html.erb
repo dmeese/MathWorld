@@ -1,2 +1,103 @@
 <h2>Administrative Interface</h2>
 <p>Please use the links below to take an action</p>
+<!-- When the submit button is pressed, the form will submit to the relative page createUserPage
+	the method for sending the data will be by http post
+	the data in the body will look like:
+	userid=blahblah&username=blahblah&authorizationlevel=blah&password=blah&confirmpassword=blah&submit=
+
+	The parts inside <% %> are ruby code; this is the magic of it being an erb.
+	This is similar to traditional ASP.
+-->
+<form method="POST" action="add">
+	<% user = nil %>
+	<table>
+		<% if user %>
+			<tr>
+				<td>
+					User ID:
+				</td>
+				<td>
+					<input type="text" name="userid" value="<%=user.UserID%>" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					User Name:
+				</td>
+				<td>
+					<input type="text" name="username" value="<%=user.UserName%>" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Authorization Level:
+				</td>
+				<td>
+					<input type="text" name="authorizationlevel" value="<%=user.AuthorizationLevel%>" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Password:
+				</td>
+				<td>
+					<input type="password" name="password" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Confirm Password:
+				</td>
+				<td>
+					<input type="password" name="confirmpassword" />
+				</td>
+			</tr>
+		<% else %>
+			<tr>
+				<td>
+					User ID:
+				</td>
+				<td>
+					<input type="text" name="userid" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					User Name:
+				</td>
+				<td>
+					<input type="text" name="username" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Authorization Level:
+				</td>
+				<td>
+					<input type="text" name="authorizationlevel" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Password:
+				</td>
+				<td>
+					<input type="password" name="password" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Confirm Password:
+				</td>
+				<td>
+					<input type="password" name="confirmpassword" />
+				</td>
+			</tr>
+		<% end %>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="submit" value="Save" />
+				</td>
+			</tr>
+	</table>
+</form>
