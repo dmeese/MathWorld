@@ -9,7 +9,10 @@ class MathContentController < ApplicationController
   def public
   end
 
-  def authUser
+  def teacher
+  end
+
+  def student
   end
 
  private
