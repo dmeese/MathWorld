@@ -1,5 +1,17 @@
 MathWorld::Application.routes.draw do
   
+  match "users/new" => "users#new"
+
+  match "users" => "users#index"
+
+  match "users/:id" => "users#show", :via => [:get]
+
+  match "users/:id/edit" => "users#edit" , :via => [:get]
+
+  match "users/:id" => "users#update", :via => [:post]
+
+  match "users/:id/destroy" => "users#destroy"
+
   get "welcome/login"
 
   get "welcome/index"
@@ -12,6 +24,7 @@ MathWorld::Application.routes.draw do
 
   get "user_mgr/adminIface"
 
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
