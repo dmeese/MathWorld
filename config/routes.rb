@@ -2,13 +2,19 @@ MathWorld::Application.routes.draw do
   
   match "users/new" => "users#new"
 
+# Note that the form_for construct we're using will
+# automagically set the method to post or put as appropriate
+# The update and create matches must come before index,
+# which will catch all other methods.
+  match "users" => "users#update", :via => [:put]
+
+  match "users" => "users#create", :via => [:post]
+
   match "users" => "users#index"
 
   match "users/:id" => "users#show", :via => [:get]
 
   match "users/:id/edit" => "users#edit" , :via => [:get]
-
-  match "users/:id" => "users#update", :via => [:post]
 
   match "users/:id/destroy" => "users#destroy"
 
