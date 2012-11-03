@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028170038) do
+ActiveRecord::Schema.define(:version => 20121103013020) do
 
   create_table "documents", :force => true do |t|
     t.string   "FileName"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20121028170038) do
 
   create_table "users", :force => true do |t|
     t.string   "UserID"
-    t.string   "Password"
+    t.string   "password_digest"
     t.string   "UserName"
     t.integer  "AuthorizationLevel"
     t.integer  "FaildAttempts"
