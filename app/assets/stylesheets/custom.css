@@ -1,0 +1,139 @@
+
+/*-------------Navigation-------------------*/
+
+/** 
+* This rule will make the navbar go to the top right corner of the viewport,
+* even if it's not the first item in the source order of the markup.
+* This CSS pulled from Google Code School CSS demo 
+*/
+#wd-navbar {
+position: absolute;
+top: 0;
+right: 0;
+width: 20%;
+border-bottom: 2px solid #ccc;
+background: #f9f9f9;
+}
+/* Reset default unordered list display style to remove bulleting/spacing */
+#wd-navbar ul {
+list-style: none;
+margin: 0;
+padding: .3em;
+}
+/* Stack LI elements horizontally instead of the default vertical orientation */
+#wd-navbar li {
+float: left;
+margin-right: 5px;
+}
+/* Turns the links into larger clickable boxes */
+#wd-navbar li a {
+display: block;
+background-color: #f9f9f9;
+border: 1px solid #f9f9f9;
+padding: .5em;
+}
+/* Pseudo selector used for a usability aid, so you know when you can click */
+#wd-navbar li a:hover {
+background-color: #333;
+color: #fff;
+text-decoration: none;
+}
+/* Hides nested hierarchy links by default */
+#wd-navbar li ul {
+display: none;
+position: absolute;
+padding: 0;
+}
+/* Shows nested hierarchy links when we mouseover the parent */
+#wd-navbar li:hover ul {
+display: block; 
+}
+/* Overrides the style on line 23 for nested link collections */
+#wd-navbar li li {
+float: none;
+border-bottom: 1px solid #ccc; /* border-top causes IE bug */
+}
+/* Different styling for nested hierarchy links. */
+#wd-navbar li li a {
+border: 0;
+border-left: 1px solid #ccc;
+border-right: 1px solid #ccc;
+} 
+
+
+/*---------------Main Content-----------------------*/
+
+
+
+
+
+
+/*---------------Typography------------------------*/
+/** 
+* This CSS pulled from Rails Tutorial sample 
+*/
+
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-weight: normal;
+  color: #999;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  text-align: left;
+  font-weight: normal;
+}
+
+p{
+font-size: 1.1em; line-height: 1.7em;
+}
+
+
+
+
+/*---------------Footer----------------------------*/
+
+/** 
+* This CSS pulled from Rails Tutorial sample 
+*/
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #999;
+}
+footer a {
+  color: #555;
+}
+footer a:hover {
+  color: #222;
+}
+footer small {
+  float: left;
+}
+footer ul {
+  float: right;
+  list-style: none;
+}
+footer ul li {
+  float: left;
+  margin-left: 10px;
+}

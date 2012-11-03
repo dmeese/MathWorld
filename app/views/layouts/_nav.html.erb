@@ -1,0 +1,33 @@
+
+<!--      Nav bar for no login     -->
+
+<!--  
+      Need to perform ERB logic to modify the nav bar based on session variables.
+      Think logged in or not, auth status, etc.
+      Nav bar code modified from Google Code Academy CSS demo
+-->
+
+
+<div id="wd-navbar">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/welcome/login">Log In</a></li>
+    <li><a href="/user_mgr/adminIface">Admin</a>
+      <ul>
+        <li><a href="/user_mgr/adminIface" class="first">Create User</a></li>
+        <li><a href="/user_mgr/adminIface">Edit User</a></li>
+        <li><a href="/user_mgr/adminIface">List Users</a></li>
+       </ul>
+    </li>
+
+    <li><a href="/math_content/public">Content</a>
+      <ul>
+        <li><a href="/math_content/public" class="first">Public Content</a></li>
+        <li><a href="/math_content/student">Student Content</a></li>
+        <li><a href="/math_content/teacher">Teacher Content</a></li>
+        <li><a href="/math_content/teacher">Upload File</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+

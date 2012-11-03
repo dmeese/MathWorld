@@ -9,31 +9,26 @@
 <body>
 	<header>
 		<h1>Math World</h1>
-		<h3>A sharing resource for math teachers</h3>
+		<h2>A sharing resource for math teachers</h3>
+		<%= render 'layouts/nav' %>
 	</header>
-	<nav>
-		<ul>
-			<li><a href ="/">Home</a><li>
-			<li><a href ="#">Nav2</a><li>
-			<li><a href ="#">Nav3</a><li>
-			<li><a href ="/welcome/login">Login</a><li>
-		</ul>
-	</nav>
 	
 
-	<section id="intro">
-		<!-- Introduction of page - Whatever goes in here is in the green box -->
-		<%= yield %>  <!-- This pulls from the view and places it here -->
-	</section>
+	<div class="content">
+		<!-- Main Content for each page -->
+		<%= yield %>  <!-- This pulls from the view and places it here.  Views will exist in div "content" class. -->
+	</div>
 	
 
-	<section>
-		<p>This is from layouts/application.html.erb, and should only show if the correct layout is not identified</p>
-	</section>	
+<footer class="footer">
+  <small>
+    <a href="#">Math World</a>
+    by Team Bunny Slippers
+  </small>
+</footer>
 
-	<footer>
-		<!-- footer -->
-	</footer>
 
 </body>
 </html>
+
+
