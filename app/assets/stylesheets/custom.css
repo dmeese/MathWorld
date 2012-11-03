@@ -10,7 +10,7 @@
 position: absolute;
 top: 0;
 right: 0;
-width: 20%;
+width: 50%;
 border-bottom: 2px solid #ccc;
 background: #f9f9f9;
 }
@@ -64,6 +64,15 @@ border-right: 1px solid #ccc;
 /*---------------Main Content-----------------------*/
 
 
+/**
+* The CSS here will apply to whatever is rendered from the views.
+
+.content {
+  
+}
+
+
+*/
 
 
 

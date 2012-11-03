@@ -7,25 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header>
-		<h1>Math World</h1>
-		<h2>A sharing resource for math teachers</h3>
-		<%= render 'layouts/nav' %>
-	</header>
-	
+<header>
+	<h1>Math World</h1>
+	<h2>A sharing resource for math teachers</h3>
+</header>
 
-	<div class="content">
-		<!-- Main Content for each page -->
-		<%= yield %>  <!-- This pulls from the view and places it here.  Views will exist in div "content" class. -->
-	</div>
-	
+<%= render 'layouts/nav' %>	
 
-<footer class="footer">
-  <small>
-    <a href="#">Math World</a>
-    by Team Bunny Slippers
-  </small>
-</footer>
+<div class="content">
+	<!-- Main Content for each page -->
+	<%= yield %>  <!-- This pulls from the view and places it here.  Views will exist in div "content" class. -->
+</div>
+	
+<%= render 'layouts/footer' %>
 
 
 </body>
