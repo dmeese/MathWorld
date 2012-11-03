@@ -7,6 +7,9 @@
 			Edit
 		</th>
 		<th>
+			Delete
+		</th>
+		<th>
 			User ID
 		</th>
 		<th>
@@ -25,6 +28,9 @@
 			<a href="/users/<%=user.id%>/edit">edit</a>
 		</td>
 		<td>
+			<a href="/users/<%=user.id%>/destroy">delete</a>
+		</td>
+		<td>
 		    <%=user.UserID%>
 		</td>
 		<td>
@@ -36,3 +42,4 @@
 	</tr>
 	<% } %>
 </table>
+<a href="/users/new">Create new user</a>
