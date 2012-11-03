@@ -1,4 +1,6 @@
 MathWorld::Application.routes.draw do
+
+  resources :documents
   
   match "users/new" => "users#new"
 

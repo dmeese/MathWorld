@@ -30,7 +30,6 @@ end
 
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
-gem 'paperclip', '~> 3.0'
 gem 'ckeditor'
 
 
@@ -48,3 +47,9 @@ gem 'ckeditor'
 
 # To use debugger
 # gem 'debugger'
+
+# Use CarrierWave for the file upload options
+gem 'carrierwave'
+
+# USe fog for storing to the cloud
+gem 'fog'

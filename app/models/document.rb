@@ -30,5 +30,6 @@ the database CRUD
 # for now
 class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
-
+  attr_accessible :FileName, :Contents, :Description, :Owner, :AuthorizationLevel, :created_at, :updated_at, :user_id
+  mount_uploader :document, DocumentUploader
 end
