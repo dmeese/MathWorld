@@ -50,5 +50,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use CarrierWave for the file upload options
 gem 'carrierwave'
 
-# USe fog for storing to the cloud
+# Use fog for storing to the cloud
 gem 'fog'
