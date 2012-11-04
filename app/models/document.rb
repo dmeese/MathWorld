@@ -14,23 +14,25 @@
 #
 
 =begin
-File represents any image, worksheet, or other large asset uploaded by a 
-Registered Teacher or (rarely) Administrator.  These are stored directly in the
-database as a blob.  Every file uploaded belongs to the user who uploaded it, in
-a one-to-many relationship.
+File represents any image, document, or other  asset uploaded by a Registered 
+Teacher or (rarely) Administrator.  These are stored in a configured Amazon
+S3 storage bucket called MathWorld as a file. Every file uploaded belongs to 
+the user who uploaded it, in a one-to-many relationship.
 
 class File connects to the file records in the underlying database through
 Rails' ActiveRecord functionality - this hides a lot of the implementation
 from us, letting us focus on just what we want to do without dealing with
 the database CRUD
+
+currently, the default ActiveRecord functionality supplied by Rails does
+everything we need.  We may need to revisit in the future, but this will do
+for now
+
+However we check the file size to be less than 128K
 =end
 
-# currently, the default ActiveRecord functionality supplied by Rails does
-# everything we need.  We may need to revisit in the future, but this will do
-# for now
-#
-# However we check the file size to be less than 128K
 require 'file_size_validator' 
+require 'stripify' 
 
 class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
@@ -41,5 +43,11 @@ class Document < ActiveRecord::Base
     :file_size => { 
       :maximum => 0.125.megabytes.to_i 
     } 
+  before_save :remove_evil
+
+  def remove_evil()
+    self.FileName = Stripify::stripify(self.FileName)
+    self.Description = Stripify::stripify(self.Description)
+  end
 end
 

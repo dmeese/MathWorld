@@ -1,10 +1,9 @@
 CarrierWave.configure do |config|
 
-# Heroku doesn't like having files written.
+# Heroku doesn't like having files written to it's file system, so hide in rails/tmp.
   config.cache_dir = "#{Rails.root}/tmp/uploads"
+
 # the configured variables need to be set in Heroku's console app to set the environment variables
-
-
   config.fog_credentials = {
     :provider               => 'AWS',       # required
     :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],       # required
