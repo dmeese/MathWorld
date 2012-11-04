@@ -1,3 +1,7 @@
+=begin
+Helper functions to be available for the views and controllers.  The ones in
+application_helper.rb are helpers expected to be used across the entire application
+=end
 require 'set'
 
 module ApplicationHelper
@@ -18,6 +22,10 @@ module ApplicationHelper
 
   #Authorized returns true if the passed-in user is authorized for the particular function
   #false otherwise
+  #Authorized is intended to be used prior to any call to test for approval to perform that 
+  #function.  Due to time constraints, use of Authorized has been put off to later iterations
+  #of the web application; the initial prototype is simply making checks directly against 
+  #AuthorizationLevel
   def Authorized(user, function)
     return false unless user.instance_of? User # user must be an instance of the User class
 
