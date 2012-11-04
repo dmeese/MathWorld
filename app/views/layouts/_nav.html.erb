@@ -15,9 +15,7 @@
     <li><a href="/sessions/logout">Log Out</a></li>
     <% else %>
     <li><a href="/welcome/login">Log In</a></li>
-<<<<<<< HEAD
     <li><a href="/users">Users</a>
-=======
     <% end %>
     <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4 %>
     <li><a href="/user_mgr/adminIface">Admin</a>
@@ -25,16 +23,13 @@
         <li><a href="/users/new" class="first">Create User</a></li>
         <li><a href="/users">List Users</a></li>
        </ul>
->>>>>>> Sessions
     </li>
     <% end %>
 
     <li><a href="/documents">Content</a>
       <ul>
-<<<<<<< HEAD
         <li><a href="/documents" class="first">Content</a></li>
         <li><a href="#">Placeholder</a></li>
-=======
         <li><a href="/math_content/public" class="first">Public Content</a></li>
         <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 2 %>
         <li><a href="/math_content/student">Student Content</a></li>
@@ -43,7 +38,6 @@
         <li><a href="/math_content/teacher">Teacher Content</a></li>
         <li><a href="/math_content/teacher">Upload File</a></li>
         <% end %>
->>>>>>> Sessions
       </ul>
     </li>
   </ul>
