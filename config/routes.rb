@@ -1,15 +1,12 @@
 MathWorld::Application.routes.draw do
-<<<<<<< HEAD
 
   resources :documents
   
-=======
 =begin
 The next routes are for the users controller.  These handle
 the user management tasks.  Users are well-modeled as a 
 RESTful resource  
 =end 
->>>>>>> Sessions
   match "users/new" => "users#new"
 # Note that the form_for construct we're using will
 # automagically set the method to post or put as appropriate
