@@ -123,8 +123,6 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Session.html">Session</a>
-  
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
@@ -152,6 +150,11 @@
 
   <div id="description" class="description">
     
+<p><a href="UsersController.html">UsersController</a> handles user management.
+Users are saved and retrieved in the database vi the <a
+href="User.html">User</a> model.  All functions in this controller should
+only be available to administrators (those with Authorization Level 4)</p>
+
   </div><!-- description -->
 
   
@@ -183,12 +186,14 @@
 
         <div class="method-description">
           
-          
+          <p>Create a new user from data provided by the form.  If the save fails for
+some reason, send back to the form so that errors can be corrected and try
+again. On success, return to the list of users</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
@@ -218,12 +223,13 @@
 
         <div class="method-description">
           
-          
+          <p>delete an existing user, with the id specified in the URL.  After delete,
+return to the list of registered users.</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 55</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@user</span>)
@@ -252,12 +258,12 @@
 
         <div class="method-description">
           
-          
+          <p>Edit an existing user.  The user id to retrieve data for come from the URL</p>
           
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -282,12 +288,12 @@
 
         <div class="method-description">
           
-          
+          <p>Show the list of users</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 15</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
@@ -311,12 +317,14 @@
 
         <div class="method-description">
           
-          
+          <pre>create a new, empty user object prior to showing the user data</pre>
+
+<p>entry form</p>
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -341,12 +349,13 @@
 
         <div class="method-description">
           
-          
+          <p>Show information for a single registered user.  The id to retrieve comes
+from the URL</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -371,12 +380,14 @@
 
         <div class="method-description">
           
-          
+          <p>Update an existing user from data provided by the form.  If the save fails
+for some reason, send back to the form so that errors can be corrected and
+try again.</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 26</span>
+            <pre><span class="ruby-comment"># File app/controllers/users_controller.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-comment">#return render :text =&gt; params</span>
   <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>][<span class="ruby-value">:id</span>])

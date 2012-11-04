@@ -105,8 +105,6 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Session.html">Session</a>
-  
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
@@ -240,12 +238,18 @@
           
           <p><a href="ApplicationHelper.html#method-c-Authorized">::Authorized</a>
 returns true if the passed-in user is authorized for the particular
-function false otherwise</p>
+function false otherwise <a
+href="ApplicationHelper.html#method-c-Authorized">::Authorized</a> is
+intended to be used prior to any call to test for approval to perform that 
+function.  Due to time constraints, use of <a
+href="ApplicationHelper.html#method-c-Authorized">::Authorized</a> has been
+put off to later iterations of the web application; the initial prototype
+is simply making checks directly against  AuthorizationLevel</p>
           
 
           
           <div class="method-source-code" id="Authorized-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 21</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Authorized</span>(<span class="ruby-identifier">user</span>, <span class="ruby-identifier">function</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">User</span> <span class="ruby-comment"># user must be an instance of the User class</span>
 

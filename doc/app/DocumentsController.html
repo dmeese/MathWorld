@@ -123,8 +123,6 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Session.html">Session</a>
-  
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
@@ -163,6 +161,19 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="Owner">Owner
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
 
     
 
@@ -191,6 +202,7 @@
             <pre><span class="ruby-comment"># File app/controllers/documents_controller.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@document</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:document</span>])
+  <span class="ruby-ivar">@document</span>.<span class="ruby-constant">Owner</span> = <span class="ruby-ivar">@loggedinuser</span>.<span class="ruby-constant">UserName</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">save</span>
@@ -228,7 +240,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/documents_controller.rb, line 74</span>
+            <pre><span class="ruby-comment"># File app/controllers/documents_controller.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@document</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">destroy</span>
@@ -399,7 +411,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/documents_controller.rb, line 58</span>
+            <pre><span class="ruby-comment"># File app/controllers/documents_controller.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@document</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 

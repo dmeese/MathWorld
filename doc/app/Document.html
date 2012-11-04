@@ -111,8 +111,6 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Session.html">Session</a>
-  
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
@@ -194,7 +192,7 @@
 
           
           <div class="method-source-code" id="remove_evil-source">
-            <pre><span class="ruby-comment"># File app/models/document.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/models/document.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_evil</span>()
   <span class="ruby-keyword">self</span>.<span class="ruby-constant">FileName</span> = <span class="ruby-constant">Stripify</span><span class="ruby-operator">::</span><span class="ruby-identifier">stripify</span>(<span class="ruby-keyword">self</span>.<span class="ruby-constant">FileName</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-constant">Description</span> = <span class="ruby-constant">Stripify</span><span class="ruby-operator">::</span><span class="ruby-identifier">stripify</span>(<span class="ruby-keyword">self</span>.<span class="ruby-constant">Description</span>)
