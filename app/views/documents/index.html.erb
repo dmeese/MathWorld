@@ -7,6 +7,8 @@
     <th>Title</th>
     <th>Description</th>
     <th>AuthorizationLevel</th>
+    <th>Owner</th>
+    <th>Created</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= document.FileName %></td>
     <td><%= document.Description %></td>
     <td><%= document.AuthorizationLevel %></td>
+    <td><%= document.Owner %></td>
+    <td><%= document.created_at %></td>
     <td><%= link_to 'Show', document %></td>
     <td><%= link_to 'Edit', edit_document_path(document) %></td>
     <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -8,6 +8,18 @@
   <b>Authorization Level:</b>
   <%= @document.AuthorizationLevel %>
 </p>
+<p>
+  <b>Owner:</b>
+  <%= @document.Owner %>
+</p>
+<p>
+  <b>Created:</b>
+  <%= @document.created_at %>
+</p>
+<p>
+  <b>Updated:</b>
+  <%= @document.updated_at %>
+</p>
 
 <p>
   <iframe src ="<%= @document.Contents %>"> </iframe>
