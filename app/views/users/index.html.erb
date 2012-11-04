@@ -1,45 +1,29 @@
-<table>
-	<tr>
-		<th>
-			Show
-		</th>
-		<th>
-			Edit
-		</th>
-		<th>
-			Delete
-		</th>
-		<th>
-			User ID
-		</th>
-		<th>
-			Authorization Level
-		</th>
-		<th>
-			User Name
-		</th>
-	</tr>
-	<% User.where("").each { |user| %>
-	<tr>
-		<td>
-			<a href="/users/<%=user.id%>">view</a>
-		</td>
-		<td>
-			<a href="/users/<%=user.id%>/edit">edit</a>
-		</td>
-		<td>
-			<a href="/users/<%=user.id%>/destroy">delete</a>
-		</td>
-		<td>
-		    <%=user.UserID%>
-		</td>
-		<td>
-			<%=user.AuthorizationLevel%>
-		</td>
-		<td>
-			<%=user.UserName%>
-		</td>
-	</tr>
-	<% } %>
-</table>
+<h3>User List</h3>
+
+<fieldset><legend>User Details</legend>
+		<table>
+			<tr>
+				<th>User ID</th>
+				<th>User Name</th>
+				<th>Authorization Level</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<% User.where("").each { |user| %>
+			<tr>
+				<td><%=user.UserID%></td>
+				<td><%=user.UserName%></td>
+				<td><%=user.AuthorizationLevel%></td>
+				<td><a href="/users/<%=user.id%>">view</a></td>
+				<td><a href="/users/<%=user.id%>/edit">edit</a></td>
+				<td><a href="/users/<%=user.id%>/destroy">delete</a></td>
+			</tr>
+			<% } %>
+		</table>
+</fieldset>
+<br>
+
 <a href="/users/new">Create new user</a>
+
+<!-- Need to add some spacing and formatting CSS to make table more legible -->

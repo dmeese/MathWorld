@@ -27,9 +27,6 @@ MathWorld::Application.routes.draw do
   get "math_content/teacher"
 
   get "math_content/student"
-
-  get "user_mgr/adminIface"
-
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

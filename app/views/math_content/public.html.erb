@@ -2,18 +2,10 @@
 <p>Find me in app/views/math_content/public.html.erb</p>
 <table>
 	<tr>
-		<th>
-			Link
-		</th>
-		<th>
-			Filename
-		</th>
-		<th>
-			Description
-		</th>
-		<th>
-			Owner
-		</th>
+		<th>Link</th>
+		<th>Filename</th>
+		<th>Description</th>
+		<th>Owner</th>
 	</tr>
 	<!-- Document is the Model class (derived from ActiveRecord::Base) which connects to our documents table
 	     in the database.  where is a standard method of ActiveRecord which gets translated to a properly
@@ -24,18 +16,10 @@
 	 -->
 	<% Document.where("AuthorizationLevel = :AuthorizationLevel", :AuthorizationLevel => 1).each do |doc| %>
 	<tr>
-		<td>
-			<a href="view?id=<%=doc.id%>">view</a>
-		</td>
-		<td>
-			<%=doc.FileName%>
-		</td>
-		<td>
-			<%=doc.Description%>
-		</td>
-		<td>
-			<%=doc.Owner%>
-		</td>
+		<td><a href="view?id=<%=doc.id%>">view</a></td>
+		<td><%=doc.FileName%></td>
+		<td><%=doc.Description%></td>
+		<td><%=doc.Owner%></td>
 	</tr>
 	<% end %>
 </table>

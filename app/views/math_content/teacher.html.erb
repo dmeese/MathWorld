@@ -28,21 +28,11 @@
 	 -->
 	<% Document.where("").each { |doc| %>
 	<tr>
-		<td>
-			<a href="view?id=<%=doc.id%>">view</a>
-		</td>
-		<td>
-			<a href="delete?id=<%=doc.id%>">delete</a>
-		</td>
-		<td>
-			<%=doc.FileName%>
-		</td>
-		<td>
-			<%=doc.Description%>
-		</td>
-		<td>
-			<%=doc.Owner%>
-		</td>
+		<td><a href="view?id=<%=doc.id%>">view</a></td>
+		<td><a href="delete?id=<%=doc.id%>">delete</a></td>
+		<td><%=doc.FileName%></td>
+		<td><%=doc.Description%></td>
+		<td><%=doc.Owner%></td>
 	</tr>
 	<% } %>
 </table>

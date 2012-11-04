@@ -1,5 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3>Examine user</h3>
+
 <!-- When the submit button is pressed, the form will submit to the relative page createUserPage
 	the method for sending the data will be by http post
 	the data in the body will look like:
@@ -8,8 +8,7 @@
 	The parts inside <% %> are ruby code; this is the magic of it being an erb.
 	This is similar to traditional ASP.
 -->
-<fieldset>
-	<legend>Show a user</legend>
+<fieldset><legend>User Details</legend>
 	<dl>
 		<dt><label for="userid">User ID</label></dt>
 		<dd><input type="text" name="userid" value="<%=@user.UserID%>" id="userid"></dd>
@@ -19,3 +18,4 @@
 		<dd><input type="text" name="authorizationlevel" value="<%=@user.AuthorizationLevel%>" id="authorizationlevel"></dd>
 	</dl>
 </fieldset>
+<a href="/users/">Back</a>

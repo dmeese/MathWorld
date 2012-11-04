@@ -14,9 +14,8 @@
 
 <%= render 'layouts/nav' %>	
 
-<div class="content">
-	<!-- Main Content for each page -->
-	<%= yield %>  <!-- This pulls from the view and places it here.  Views will exist in div "content" class. -->
+<div class="main_content">
+	<%= yield %>  <!-- This pulls from the view and places it here.  Views will exist in div "main_content" class. -->
 </div>
 	
 <%= render 'layouts/footer' %>
