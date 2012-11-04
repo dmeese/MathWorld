@@ -11,8 +11,8 @@
 
 <% @documents.each do |document| %>
   <tr>
-    <td><%= document.title %></td>
-    <td><%= document.document %></td>
+    <td><%= document.FileName %></td>
+    <td><%= document.Contents %></td>
     <td><%= link_to 'Show', document %></td>
     <td><%= link_to 'Edit', edit_document_path(document) %></td>
     <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
