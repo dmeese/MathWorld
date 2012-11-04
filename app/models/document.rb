@@ -38,15 +38,9 @@ class Document < ActiveRecord::Base
   #belongs_to is an ActiveRecord method which establishes a 
   #foreign key relationship, with this record as the child
   belongs_to :user, :foreign_key => :id
-<<<<<<< HEAD
+  # Set up :FileName, :Contents, :AuthorizationLevel, and :Description as 
+  # mass-assignable (such as during construction)
   attr_accessible :FileName, :Contents, :Description, :AuthorizationLevel
-=======
-  
-  # Set up :FileName, :Contents, and :Description as mass-assignable
-  #(such as during construction)
-  attr_accessible :FileName, :Contents, :Description
-  
->>>>>>> 6cd6bd1f30d03243e8e3b875975bfe6275aa9828
   mount_uploader :Contents, DocumentUploader
   
   #Use ActiveRecord's built-in validators
