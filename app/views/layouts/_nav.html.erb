@@ -11,21 +11,30 @@
 <div id="wd-navbar">
   <ul>
     <li><a href="/">Home</a></li>
+    <% if @loggedinuser %>
+    <li><a href="/sessions/logout">Log Out</a></li>
+    <% else %>
     <li><a href="/welcome/login">Log In</a></li>
+    <% end %>
+    <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4 %>
     <li><a href="/user_mgr/adminIface">Admin</a>
       <ul>
-        <li><a href="/user_mgr/adminIface" class="first">Create User</a></li>
-        <li><a href="/user_mgr/adminIface">Edit User</a></li>
-        <li><a href="/user_mgr/adminIface">List Users</a></li>
+        <li><a href="/users/new" class="first">Create User</a></li>
+        <li><a href="/users">List Users</a></li>
        </ul>
     </li>
+    <% end %>
 
     <li><a href="/math_content/public">Content</a>
       <ul>
         <li><a href="/math_content/public" class="first">Public Content</a></li>
+        <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 2 %>
         <li><a href="/math_content/student">Student Content</a></li>
+        <% end %>
+        <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3 %>
         <li><a href="/math_content/teacher">Teacher Content</a></li>
         <li><a href="/math_content/teacher">Upload File</a></li>
+        <% end %>
       </ul>
     </li>
   </ul>
