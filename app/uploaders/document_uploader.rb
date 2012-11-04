@@ -1,5 +1,7 @@
 # encoding: utf-8
-
+#
+# We use the CarrierWave Uploader to allow easy uploading to the Amazon S3 enviroment
+#
 class DocumentUploader < CarrierWave::Uploader::Base
   # Handles Heroku's lack of filesystem
   def cache_dir

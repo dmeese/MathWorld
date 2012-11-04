@@ -1,3 +1,42 @@
+== Welcome to MathWorld
+
+The BunnySlippers Math World (BMW) project is a miniature math education web application.
+As part of the first spiral, we are setting up 4 basic roles, and user accounts are assigned to
+those roles:
+	Public Users: Any public user can access part of the math materials that opens to
+public. They do not have to provide a login. Public users can view public content
+only.
+	Registered Students: Registered Students can download materials and access extra
+materials that are only open to users who create an account. Registered students
+can view public or registered only content.
+	Registered Teachers: Registered Teachers can upload materials and make them
+available to the public, or only registered users. Registered teachers can view and
+upload/delete content and mark it as public or registered only
+	Administrators: Administrators have admin privilege to manage the application/site.
+Admins can do everything AND they can modify accounts.
+
+For now, there will be no sub-partitioning of users into groups like classes. All registered users
+will be able to see all of the content that is restricted to registered users. Students will have
+read-only and teachers will have read/write access. Students and public users will see a list
+of files they can download, and teachers will have the additional ability to upload files, with a
+description and radio button for public or registered access only.
+
+== Running MathWorld
+
+Since MathWorld requires access to an Amazon S3 environment to save it's files, 
+you will need to create environment varibles to allow the rails server to access 
+the configured S3 Bucket.
+
+1. Create an S3 bucket called 'MathWorld' on Us-East-1
+2. Start your rails server with the appropriate key details as shown below 
+	env AWS_ACCESS_KEY_ID="KEY_HERE" AWS_SECRET_ACCESS_KEY="SECRET_KEY_HERE" rails server
+
+Now you can access the local rails server, and store to the S3 environment.
+
+If using a service like Heroku, you will need to add the environment variables
+as needed.
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
