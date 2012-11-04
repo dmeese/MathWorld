@@ -1,0 +1,13 @@
+<% provide(:title, "MathWorld - Sign in") %>
+<% flash.each do |key, value| %>
+	<div><%=key%>:   <%=value%><br/></div>
+<% end %>
+<h3>Sign in</h3>
+<%= form_for(:session, url: sessions_path) do |f| %>
+  <%= f.label :userid %>
+  <%= f.text_field :userid %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.submit "Log in" %>
+<% end %>

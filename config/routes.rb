@@ -1,26 +1,36 @@
 MathWorld::Application.routes.draw do
+<<<<<<< HEAD
 
   resources :documents
   
+=======
+=begin
+The next routes are for the users controller.  These handle
+the user management tasks.  Users are well-modeled as a 
+RESTful resource  
+=end 
+>>>>>>> Sessions
   match "users/new" => "users#new"
-
 # Note that the form_for construct we're using will
 # automagically set the method to post or put as appropriate
 # The update and create matches must come before index,
 # which will catch all other methods.
   match "users" => "users#update", :via => [:put]
-
   match "users" => "users#create", :via => [:post]
-
   match "users" => "users#index"
-
   match "users/:id" => "users#show", :via => [:get]
-
   match "users/:id/edit" => "users#edit" , :via => [:get]
-
   match "users/:id/destroy" => "users#destroy"
 
-  get "welcome/login"
+=begin
+Create the routing for signin/session management.  A session
+can be treated as another RESTFUL resource, just one without
+persistent storage in the database
+=end
+  match 'welcome/login' => 'sessions#showsignin', :via => [:get]
+  match 'sessions' => 'sessions#showsignin', :via => [:get]
+  match 'sessions' => 'sessions#login', :via => [:post]
+  match 'sessions/logout' => 'sessions#logout'
 
   get "welcome/index"
 
