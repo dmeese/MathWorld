@@ -1,7 +1,17 @@
+=begin
+SessionsController handles login and logout, as that is tightly entwined 
+with session setup and teardown.  On successful login, we also redirect
+to a reasonable page.
+=end
 class SessionsController < ApplicationController
+
+	#showing the login page requires no special action; just allow the page to show
 	def showsignin
 	end
 
+	#after entering login credentials, see if we can't authenticate the user.
+	#if not, present them a message and redirect back to the login page.
+	#On success, remember them in the session.
 	def login
 		user = User.find_by_UserID(params[:session][:userid])
 		if user && user.authenticate(params[:session][:password])
@@ -21,6 +31,7 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	#Remove the user from the session and send them to the home page.
 	def logout
 		session[:remember_token] = nil
 		redirect_to '/'
