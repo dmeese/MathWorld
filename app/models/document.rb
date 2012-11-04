@@ -35,14 +35,29 @@ require 'file_size_validator'
 require 'stripify' 
 
 class Document < ActiveRecord::Base
+  #belongs_to is an ActiveRecord method which establishes a 
+  #foreign key relationship, with this record as the child
   belongs_to :user, :foreign_key => :id
+<<<<<<< HEAD
   attr_accessible :FileName, :Contents, :Description, :AuthorizationLevel
+=======
+  
+  # Set up :FileName, :Contents, and :Description as mass-assignable
+  #(such as during construction)
+  attr_accessible :FileName, :Contents, :Description
+  
+>>>>>>> 6cd6bd1f30d03243e8e3b875975bfe6275aa9828
   mount_uploader :Contents, DocumentUploader
+  
+  #Use ActiveRecord's built-in validators
   validates :Contents,
     :presence => true, 
     :file_size => { 
       :maximum => 0.125.megabytes.to_i 
     } 
+    
+    #set up remove_evil as an event callback, to be called before
+    #the record is committed to the data repository.
   before_save :remove_evil
 
   def remove_evil()
