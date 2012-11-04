@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class Object - Rails Application Documentation</title>
+<title>module Stripify - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
 
-<body id="top" class="class">
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/stripify.rb
+    <li>lib/stripify.rb
   </ul>
 </nav>
 
@@ -56,13 +56,7 @@
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link">BasicObject
-  
-</nav>
-
+    
     
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
@@ -70,7 +64,7 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-stripify">#stripify</a>
+    <li><a href="#method-c-stripify">::stripify</a>
     
   </ul>
 </nav>
@@ -111,13 +105,13 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Object.html">Object</a>
-  
     <li><a href="./Session.html">Session</a>
   
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Stripify.html">Stripify</a>
   
     <li><a href="./User.html">User</a>
   
@@ -136,10 +130,12 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Object</h1>
+  <h1 class="module">module Stripify</h1>
 
   <div id="description" class="description">
     
+<p>Function to strip all special characters from the user_input.</p>
+
   </div><!-- description -->
 
   
@@ -156,11 +152,11 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
     
-      <div id="method-i-stripify" class="method-detail ">
+      <div id="method-c-stripify" class="method-detail ">
         
         <div class="method-heading">
           <span class="method-name">stripify</span><span
@@ -171,13 +167,13 @@
 
         <div class="method-description">
           
-          <p>Function to strip all special characters from the user_input.</p>
+          
           
 
           
           <div class="method-source-code" id="stripify-source">
-            <pre><span class="ruby-comment"># File app/stripify.rb, line 3</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">stripify</span>(<span class="ruby-identifier">input_string</span>)
+            <pre><span class="ruby-comment"># File lib/stripify.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stripify</span>(<span class="ruby-identifier">input_string</span>)
         <span class="ruby-identifier">output</span> = <span class="ruby-identifier">input_string</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">%q{;`&quot;'}</span>, <span class="ruby-string">''</span>) 
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">output</span> 
 <span class="ruby-keyword">end</span></pre>
@@ -191,7 +187,7 @@
       </div><!-- stripify-method -->
 
     
-    </section><!-- public-instance-method-details -->
+    </section><!-- public-class-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 

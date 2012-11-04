@@ -64,7 +64,17 @@
 </nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-remove_evil">#remove_evil</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -101,13 +111,13 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Object.html">Object</a>
-  
     <li><a href="./Session.html">Session</a>
   
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Stripify.html">Stripify</a>
   
     <li><a href="./User.html">User</a>
   
@@ -141,11 +151,66 @@
     
 
     
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="Description">Description
+        
+        <dd class="description">
+        
+      
+        <dt id="FileName">FileName
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
 
     
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-remove_evil" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_evil</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="remove_evil-source">
+            <pre><span class="ruby-comment"># File app/models/document.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_evil</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-constant">FileName</span> = <span class="ruby-constant">Stripify</span><span class="ruby-operator">::</span><span class="ruby-identifier">stripify</span>(<span class="ruby-keyword">self</span>.<span class="ruby-constant">FileName</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-constant">Description</span> = <span class="ruby-constant">Stripify</span><span class="ruby-operator">::</span><span class="ruby-identifier">stripify</span>(<span class="ruby-keyword">self</span>.<span class="ruby-constant">Description</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_evil-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_evil-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

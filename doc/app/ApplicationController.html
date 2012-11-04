@@ -111,13 +111,13 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Object.html">Object</a>
-  
     <li><a href="./Session.html">Session</a>
   
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Stripify.html">Stripify</a>
   
     <li><a href="./User.html">User</a>
   
@@ -140,6 +140,11 @@
 
   <div id="description" class="description">
     
+<p>The <a href="ApplicationController.html">ApplicationController</a> class is
+the base class for all of the controllers for the MathWorld application. 
+Any methods defined here are available to all of the controllers and,
+through them, the views as well</p>
+
   </div><!-- description -->
 
   
@@ -171,12 +176,17 @@
 
         <div class="method-description">
           
-          
+          <p>session is defined by Rails for session storage. It’s session cookie based,
+so it goes away when the browser is closed.  For MathWorld, this is
+desirable. <a href="http://:remember_token">session</a> is used to store
+the user id (the real underlying id, an integer) for subsequent calls. 
+“protect_from_forgery” above tells Rails to use it’s own system to prevent
+forging the session values.</p>
           
 
           
           <div class="method-source-code" id="getUser-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">getUser</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:remember_token</span>]
               <span class="ruby-ivar">@loggedinuser</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:remember_token</span>])
