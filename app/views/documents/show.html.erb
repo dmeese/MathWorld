@@ -4,6 +4,10 @@
   <b>Title:</b>
   <%= @document.FileName %>
 </p>
+<p>
+  <b>Authorization Level:</b>
+  <%= @document.AuthorizationLevel %>
+</p>
 
 <p>
   <iframe src ="<%= @document.Contents %>"> </iframe>
