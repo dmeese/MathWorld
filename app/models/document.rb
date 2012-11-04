@@ -28,8 +28,18 @@ the database CRUD
 # currently, the default ActiveRecord functionality supplied by Rails does
 # everything we need.  We may need to revisit in the future, but this will do
 # for now
+#
+# However we check the file size to be less than 128K
+require 'file_size_validator' 
+
 class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
   attr_accessible :FileName, :Contents, :Description
   mount_uploader :Contents, DocumentUploader
+  validates :Contents,
+    :presence => true, 
+    :file_size => { 
+      :maximum => 0.125.megabytes.to_i 
+    } 
 end
+
