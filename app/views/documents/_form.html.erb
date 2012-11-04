@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<br><br>
   <div class="field">
     <%= f.label :FileName %><br />
     <%= f.text_area :FileName %>
@@ -23,6 +23,12 @@
     <%= f.label :Contents %><br />
     <%= f.file_field :Contents %>
   </div>
+  <br />
+  <div class="field">
+    <%= check_box(f, :AuthorizationLevel, {},  checked_value = "1", unchecked_value = "10") %>
+    <%= f.label :AuthorizationLevel, "Public Access?" %>
+  </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -37,9 +37,6 @@ GEM
     carrierwave (0.7.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    ckeditor (3.7.3)
-      mime-types
-      orm_adapter
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -80,7 +77,6 @@ GEM
     net-ssh (2.6.1)
     nokogiri (1.5.5)
     nokogiri (1.5.5-x86-mingw32)
-    orm_adapter (0.4.0)
     pg (0.14.1)
     pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
@@ -139,7 +135,6 @@ DEPENDENCIES
   annotate (>= 2.4.0)
   bcrypt-ruby (~> 3.0.0)
   carrierwave
-  ckeditor
   coffee-rails (~> 3.2.1)
   fog
   jquery-rails

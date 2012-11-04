@@ -36,7 +36,7 @@ require 'stripify'
 
 class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
-  attr_accessible :FileName, :Contents, :Description
+  attr_accessible :FileName, :Contents, :Description, :AuthorizationLevel
   mount_uploader :Contents, DocumentUploader
   validates :Contents,
     :presence => true, 
