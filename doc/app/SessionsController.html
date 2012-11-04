@@ -115,13 +115,13 @@
   
     <li><a href="./MathContentHelper.html">MathContentHelper</a>
   
-    <li><a href="./Object.html">Object</a>
-  
     <li><a href="./Session.html">Session</a>
   
     <li><a href="./SessionsController.html">SessionsController</a>
   
     <li><a href="./SessionsHelper.html">SessionsHelper</a>
+  
+    <li><a href="./Stripify.html">Stripify</a>
   
     <li><a href="./User.html">User</a>
   
@@ -144,6 +144,10 @@
 
   <div id="description" class="description">
     
+<p><a href="SessionsController.html">SessionsController</a> handles login and
+logout, as that is tightly entwined  with session setup and teardown.  On
+successful login, we also redirect to a reasonable page.</p>
+
   </div><!-- description -->
 
   
@@ -175,12 +179,14 @@
 
         <div class="method-description">
           
-          
+          <p>after entering login credentials, see if we can’t authenticate the user. if
+not, present them a message and redirect back to the login page. On
+success, remember them in the session.</p>
           
 
           
           <div class="method-source-code" id="login-source">
-            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">login</span>
         <span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find_by_UserID</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:session</span>][<span class="ruby-value">:userid</span>])
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:session</span>][<span class="ruby-value">:password</span>])
@@ -220,12 +226,12 @@
 
         <div class="method-description">
           
-          
+          <p>Remove the user from the session and send them to the home page.</p>
           
 
           
           <div class="method-source-code" id="logout-source">
-            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 24</span>
+            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">logout</span>
         <span class="ruby-identifier">session</span>[<span class="ruby-value">:remember_token</span>] = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">redirect_to</span> <span class="ruby-string">'/'</span>
@@ -251,12 +257,13 @@
 
         <div class="method-description">
           
-          
+          <p>showing the login page requires no special action; just allow the page to
+show</p>
           
 
           
           <div class="method-source-code" id="showsignin-source">
-            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/sessions_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">showsignin</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- showsignin-source -->
