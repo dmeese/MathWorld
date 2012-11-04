@@ -28,6 +28,7 @@
     <%= check_box(f, :AuthorizationLevel, {},  checked_value = "1", unchecked_value = "10") %>
     <%= f.label :AuthorizationLevel, "Public Access?" %>
   </div>
+    <%= hidden_field_tag(:Owner, @loggedinuser.UserName) %>
   <br />
   <div class="actions">
     <%= f.submit %>
