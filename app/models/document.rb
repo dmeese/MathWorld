@@ -40,7 +40,7 @@ class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
   # Set up :FileName, :contents, :AuthorizationLevel, and :Description as 
   # mass-assignable (such as during construction)
-  attr_accessible :FileName, :contents, :Description, :AuthorizationLevel, :Owner
+  attr_accessible :FileName, :contents, :Description, :AuthorizationLevel
   mount_uploader :contents, DocumentUploader
   
   #Use ActiveRecord's built-in validators
