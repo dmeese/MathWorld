@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103013020) do
+ActiveRecord::Schema.define(:version => 20121104231515) do
 
   create_table "documents", :force => true do |t|
     t.string   "FileName"
     t.string   "Description"
-    t.binary   "Contents"
+    t.binary   "contents"
     t.string   "Owner"
     t.integer  "AuthorizationLevel"
     t.datetime "created_at",         :null => false

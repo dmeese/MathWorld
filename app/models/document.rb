@@ -5,7 +5,7 @@
 #  id                 :integer          not null, primary key
 #  FileName           :string(255)
 #  Description        :string(255)
-#  Contents           :binary
+#  contents           :binary
 #  Owner              :string(255)
 #  AuthorizationLevel :integer
 #  created_at         :datetime         not null
@@ -38,13 +38,13 @@ class Document < ActiveRecord::Base
   #belongs_to is an ActiveRecord method which establishes a 
   #foreign key relationship, with this record as the child
   belongs_to :user, :foreign_key => :id
-  # Set up :FileName, :Contents, :AuthorizationLevel, and :Description as 
+  # Set up :FileName, :contents, :AuthorizationLevel, and :Description as 
   # mass-assignable (such as during construction)
-  attr_accessible :FileName, :Contents, :Description, :AuthorizationLevel, :Owner
-  mount_uploader :Contents, DocumentUploader
+  attr_accessible :FileName, :contents, :Description, :AuthorizationLevel, :Owner
+  mount_uploader :contents, DocumentUploader
   
   #Use ActiveRecord's built-in validators
-  validates :Contents,
+  validates :contents,
     :presence => true, 
     :file_size => { 
       :maximum => 0.125.megabytes.to_i 
