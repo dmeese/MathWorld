@@ -1,2 +1,0 @@
-module UserMgrHelper
-end
