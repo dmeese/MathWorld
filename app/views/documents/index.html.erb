@@ -18,7 +18,7 @@
 
 <!-- Show Public documents only for Public -->
     <%if @loggedinuser == nil %>
-        <% if @document.AuthorizationLevel == 1 %>
+        <% if document.AuthorizationLevel == 1 %>
        <tr>
         <td><%= document.FileName %></td>
         <td><%= document.Description %></td>
