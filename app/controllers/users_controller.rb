@@ -1,62 +1,61 @@
-=begin
-UsersController handles user management.  Users are saved and retrieved in the database
-vi the User model.  All functions in this controller should only be available to administrators
-(those with Authorization Level 4)
-=end
 class UsersController < ApplicationController
-
-  # create a new, empty user object prior to showing the user data
-  #entry form
   def new
     @user = User.new
   end
 
-  #Create a new user from data provided by the form.  If the save fails for
-  #some reason, send back to the form so that errors can be corrected and try again.
-  #On success, return to the list of users
+# Only administrator with authorization level 4 can create a new user
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to :action => 'index'
-    else
-      render 'new'
+    if @loggedinuser.AuthorizationLevel >= 4
+
+        @user = User.new(params[:user])
+        if @user.save
+         redirect_to :action => 'index'
+        else
+         render 'new'
+        end
+    else 
+       redirect_to '/'
     end
   end
 
-  #Show the list of users
   def index
   end
 
-  #Show information for a single registered user.  The id to
-  #retrieve comes from the URL
   def show
     @user = User.find(params[:id])
   end
 
-  #Edit an existing user.  The user id to retrieve data for come from the URL
   def edit
     @user = User.find(params[:id])
   end
 
-  #Update an existing user from data provided by the form.  If the save fails for
-  #some reason, send back to the form so that errors can be corrected and try again.
+# Only administrator with authorization level 4 can update user account
   def update
+    if @loggedinuser.AuthorizationLevel >= 4
     #return render :text => params
-    @user = User.find(params[:user][:id])
-    if @user.update_attributes(params[:user])
-      redirect_to :action => 'index'
-    else
-      render 'edit'
+       @user = User.find(params[:user][:id])
+       if @user.update_attributes(params[:user])
+          redirect_to :action => 'index'
+       else
+         render 'edit'
+       end
+    else 
+       redirect_to '/'
     end
   end
 
-  #delete an existing user, with the id specified in the URL.  After delete, return to
-  #the list of registered users.
+# Only administrator with authorization level 4 can destroy existing user account
   def destroy
-    @user = User.find(params[:id])
-    if (@user)
-      @user.destroy
-    end
-    redirect_to :action => 'index'
+    if @loggedinuser.AuthorizationLevel >= 4
+       @user = User.find(params[:id])
+       if (@user)
+         @user.destroy
+       end
+       redirect_to :action => 'index'
+    else
+        redirect_to '/'
+    end 
   end
+
+
 end
