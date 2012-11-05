@@ -18,25 +18,17 @@
     <li><a href="/users">Users</a>
     <% end %>
     <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4 %>
-    <li><a href="/user_mgr/adminIface">Admin</a>
-      <ul>
-        <li><a href="/users/new" class="first">Create User</a></li>
-        <li><a href="/users">List Users</a></li>
-       </ul>
-    </li>
+    <li><a href="/users">User Admin</a></li>
     <% end %>
 
     <li><a href="/documents">Content</a>
       <ul>
-        <li><a href="/documents" class="first">Content</a></li>
-        <li><a href="#">Placeholder</a></li>
         <li><a href="/math_content/public" class="first">Public Content</a></li>
         <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 2 %>
         <li><a href="/math_content/student">Student Content</a></li>
         <% end %>
         <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3 %>
         <li><a href="/math_content/teacher">Teacher Content</a></li>
-        <li><a href="/math_content/teacher">Upload File</a></li>
         <% end %>
       </ul>
     </li>
