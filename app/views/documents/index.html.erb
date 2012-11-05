@@ -16,37 +16,9 @@
 
 <% @documents.each do |document| %>
 
-<!-- Show , Edit, Delete all documents for Admins and Teachers -->
-
-    <% if @loggedinuser.AuthorizationLevel >= 3 %>
-      <tr>
-        <td><%= document.FileName %></td>
-        <td><%= document.Description %></td>
-        <td><%= document.AuthorizationLevel %></td>
-        <td><%= document.Owner %></td>
-        <td><%= document.created_at %></td>
-        <td><%= link_to 'Show', document %></td>
-        <td><%= link_to 'Edit', edit_document_path(document) %></td>
-        <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-
-<!-- Show all documents only for Students -->
-
-    <% elsif @loggedinuser.AuthorizationLevel == 2 %>
-       <tr>
-        <td><%= document.FileName %></td>
-        <td><%= document.Description %></td>
-        <td><%= document.AuthorizationLevel %></td>
-        <td><%= document.Owner %></td>
-        <td><%= document.created_at %></td>
-        <td><%= link_to 'Show', document %></td>
-      </tr>
-    <% end %>
-
 <!-- Show Public documents only for Public -->
-
-    <% elsif @document.AuthorizationLevel == 1 %>
+    <%if @loggedinuser == nil %>
+        <% if @document.AuthorizationLevel == 1 %>
        <tr>
         <td><%= document.FileName %></td>
         <td><%= document.Description %></td>
@@ -55,11 +27,46 @@
         <td><%= document.created_at %></td>
         <td><%= link_to 'Show', document %></td>
       </tr>
-    <% end %>  
+        <% end %>
+    <% end %> 
+
+<!-- Show , Edit, Delete all documents for Admins and Teachers -->
+    <% if @loggedinuser %>
+
+        <% if @loggedinuser.AuthorizationLevel >= 3 %>
+          <tr>
+            <td><%= document.FileName %></td>
+            <td><%= document.Description %></td>
+            <td><%= document.AuthorizationLevel %></td>
+            <td><%= document.Owner %></td>
+            <td><%= document.created_at %></td>
+            <td><%= link_to 'Show', document %></td>
+            <td><%= link_to 'Edit', edit_document_path(document) %></td>
+            <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+     
+
+    <!-- Show all documents only for Students -->
+
+        <% elsif @loggedinuser.AuthorizationLevel == 2 %>
+           <tr>
+            <td><%= document.FileName %></td>
+            <td><%= document.Description %></td>
+            <td><%= document.AuthorizationLevel %></td>
+            <td><%= document.Owner %></td>
+            <td><%= document.created_at %></td>
+            <td><%= link_to 'Show', document %></td>
+          </tr>
+        <% end %> 
+    <% end %> 
+
 
 <% end %>
 </table>
 </fieldset>
 <br />
-
-<%= link_to 'New Document', new_document_path %>
+<% if @loggedinuser %>
+    <% if @loggedinuser.AuthorizationLevel >= 3 %>
+        <%= link_to 'New Document', new_document_path %>
+    <% end %>
+<% end %> 

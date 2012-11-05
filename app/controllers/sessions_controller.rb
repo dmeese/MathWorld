@@ -17,13 +17,13 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			session[:remember_token] = user.id
 			if user.AuthorizationLevel == 1
-				redirect_to '/math_content/public'
+				redirect_to '/documents'
 			elsif user.AuthorizationLevel == 2
-				redirect_to '/math_content/student'
+				redirect_to '/documents'
 			elsif user.AuthorizationLevel > 2
-				redirect_to '/math_content/teacher'
+				redirect_to '/documents'
 			else
-				redirect_to '/math_content/public'
+				redirect_to '/'
 			end
 		else
 			flash[:error] = 'Invalid Login'
