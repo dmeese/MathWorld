@@ -41,4 +41,17 @@ class User < ActiveRecord::Base
   #Sets up foreign key relationship with the documents table/Document model object.
   #This object is the parent record; the foreign key field in documents defaults to user_id.
   has_many :documents
+
+  # Make sure we don't have any SQL injection in the user ID or User name.
+  require 'stripify'
+
+  #set up remove_evil as an event callback, to be called before
+  #the record is committed to the database
+  before_save :remove_evil
+
+  def remove_evil()
+    self.UserID = Stripify::stripify(self.UserID)
+    self.UserName = Stripify::stripify(self.UserName)
+  end
+
 end
