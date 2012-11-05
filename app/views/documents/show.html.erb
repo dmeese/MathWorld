@@ -1,33 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @document.FileName %>
-</p>
-<p>
-  <b>Description:</b>
-  <%= @document.Description %>
-</p>
-<p>
-  <b>Authorization Level:</b>
-  <%= @document.AuthorizationLevel %>
-</p>
-<p>
-  <b>Owner:</b>
-  <%= @document.Owner %>
-</p>
-<p>
-  <b>Created:</b>
-  <%= @document.created_at %>
-</p>
-<p>
-  <b>Updated:</b>
-  <%= @document.updated_at %>
-</p>
-
-<p>
-  <iframe src ="<%= @document.contents %>"> </iframe>
-</p>
+<p><b>Title:</b><%= @document.FileName %></p>
+<p><b>Description:</b><%= @document.Description %></p>
+<p><b>Authorization Level:</b><%= @document.AuthorizationLevel %></p>
+<p><b>Owner:</b><%= @document.Owner %></p>
+<p><b>Created:</b><%= @document.created_at %></p>
+<p><b>Updated:</b><%= @document.updated_at %></p>
+<p><iframe src ="<%= @document.contents %>"> </iframe></p>
 
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
