@@ -15,23 +15,12 @@
     <li><a href="/sessions/logout">Log Out</a></li>
     <% else %>
     <li><a href="/welcome/login">Log In</a></li>
-    <li><a href="/users">Users</a>
     <% end %>
     <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4 %>
     <li><a href="/users">User Admin</a></li>
     <% end %>
 
     <li><a href="/documents">Content</a>
-      <ul>
-        <li><a href="/math_content/public" class="first">Public Content</a></li>
-        <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 2 %>
-        <li><a href="/math_content/student">Student Content</a></li>
-        <% end %>
-        <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3 %>
-        <li><a href="/math_content/teacher">Teacher Content</a></li>
-        <% end %>
-      </ul>
-    </li>
   </ul>
 </div>
 
