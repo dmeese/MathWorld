@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   # create a new, empty user object prior to showing the user data
   #entry form
   def new
+ 
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
     	@user = User.new
     else 
@@ -19,6 +22,9 @@ class UsersController < ApplicationController
   #some reason, send back to the form so that errors can be corrected and try again.
   #On success, return to the list of users
   def create
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
 
         @user = User.new(params[:user])
@@ -34,6 +40,9 @@ class UsersController < ApplicationController
 
   #Show the list of users
   def index
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
     else 
        redirect_to '/'
@@ -43,6 +52,9 @@ class UsersController < ApplicationController
   #Show information for a single registered user.  The id to
   #retrieve comes from the URL
   def show
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
     	@user = User.find(params[:id])
     else 
@@ -52,6 +64,9 @@ class UsersController < ApplicationController
 
   #Edit an existing user.  The user id to retrieve data for come from the URL
   def edit
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
     	@user = User.find(params[:id])
     else 
@@ -62,6 +77,9 @@ class UsersController < ApplicationController
   #Update an existing user from data provided by the form.  If the save fails for
   #some reason, send back to the form so that errors can be corrected and try again.
   def update
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
     #return render :text => params
        @user = User.find(params[:user][:id])
@@ -78,6 +96,9 @@ class UsersController < ApplicationController
   #delete an existing user, with the id specified in the URL.  After delete, return to
   #the list of registered users.
   def destroy
+
+ #Make sure only logged in admins can manipulate users
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
        @user = User.find(params[:id])
        if (@user)

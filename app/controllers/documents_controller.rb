@@ -15,6 +15,8 @@ class DocumentsController < ApplicationController
   def show
     @document = Document.find(params[:id])
 
+#This shows only public content to non-logged inusers
+
     if (@loggedinuser && @loggedinuser.AuthorizationLevel >= 1 ) || @document.AuthorizationLevel == 1 
       respond_to do |format|
         format.html # show.html.erb
@@ -28,6 +30,9 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   # GET /documents/new.json
   def new
+
+#Make sure only logged in users can manipulate content
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
        @document = Document.new
 
@@ -42,6 +47,9 @@ class DocumentsController < ApplicationController
 
   # GET /documents/1/edit
   def edit
+
+#Make sure only logged in users can manipulate content
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
       @document = Document.find(params[:id])
     else
@@ -52,6 +60,9 @@ class DocumentsController < ApplicationController
   # POST /documents
   # POST /documents.json
   def create
+
+#Make sure only logged in users can manipulate content
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
       @document = Document.new(params[:document])
       @document.Owner = @loggedinuser.UserName
@@ -73,6 +84,9 @@ class DocumentsController < ApplicationController
   # PUT /documents/1
   # PUT /documents/1.json
   def update
+
+#Make sure only logged in users can manipulate content
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
       @document = Document.find(params[:id])
 
@@ -93,6 +107,9 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+
+#Make sure only logged in users can manipulate content
+
     if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
       @document = Document.find(params[:id])
       @document.destroy
