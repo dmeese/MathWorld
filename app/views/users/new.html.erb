@@ -12,12 +12,12 @@
 	<%= render 'shared/error_messages' %>
 	<fieldset><legend>User Details</legend>
 		<ul>
-			<li><%= f.label :UserID , "User ID"%></li>
-			<li><%= f.text_field :UserID %></li>
-			<li><%= f.label :UserName , "User Name"%></li>
-			<li><%= f.text_field :UserName %></li></li>
-			<li><%= f.label :AuthorizationLevel, "Authorization Level" %>
-			<li><%= f.text_field :AuthorizationLevel %></li>
+			<li><%= f.label :userid , "User ID"%></li>
+			<li><%= f.text_field :userid %></li>
+			<li><%= f.label :username , "User Name"%></li>
+			<li><%= f.text_field :username %></li></li>
+			<li><%= f.label :authorizationlevel, "Authorization Level (2 = student, 3 = teacher, 4 = admin)" %>
+			<li><%= f.text_field :authorizationlevel %></li>
 			<li><%= f.label :password %></li>
 			<li><%= f.password_field :password %></li>
 			<li><%= f.label :password_confirmation, "Confirm Password" %></li>

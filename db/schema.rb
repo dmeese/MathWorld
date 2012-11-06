@@ -11,31 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121104231515) do
+ActiveRecord::Schema.define(:version => 20121106170540) do
 
   create_table "documents", :force => true do |t|
-    t.string   "FileName"
-    t.string   "Description"
+    t.string   "filename"
+    t.string   "description"
     t.binary   "contents"
-    t.string   "Owner"
-    t.integer  "AuthorizationLevel"
+    t.string   "owner"
+    t.integer  "authorizationlevel"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.integer  "user_id"
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "SessionID"
-    t.integer  "UserIndex"
-    t.datetime "LastUpdate"
+    t.string   "sessionid"
+    t.integer  "userindex"
+    t.datetime "lastupdate"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "UserID"
+    t.string   "userid"
     t.string   "password_digest"
-    t.string   "UserName"
-    t.integer  "AuthorizationLevel"
-    t.integer  "FaildAttempts"
+    t.string   "username"
+    t.integer  "authorizationlevel"
+    t.integer  "faildattempts"
     t.datetime "created_on"
     t.datetime "updated_on"
   end

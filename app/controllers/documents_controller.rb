@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
 
 #This shows only public content to non-logged inusers
 
-    if (@loggedinuser && @loggedinuser.AuthorizationLevel >= 1 ) || @document.AuthorizationLevel == 1 
+    if (@loggedinuser && @loggedinuser.authorizationlevel >= 1 ) || @document.authorizationlevel == 1 
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @document }
@@ -33,7 +33,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
        @document = Document.new
 
       respond_to do |format|
@@ -50,7 +50,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.find(params[:id])
     else
        redirect_to '/'
@@ -63,9 +63,9 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.new(params[:document])
-      @document.Owner = @loggedinuser.UserName
+      @document.owner = @loggedinuser.username
   
       respond_to do |format|
         if @document.save
@@ -87,7 +87,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.find(params[:id])
 
       respond_to do |format|
@@ -110,7 +110,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.find(params[:id])
       @document.destroy
 

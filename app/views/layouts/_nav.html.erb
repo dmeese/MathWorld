@@ -13,7 +13,7 @@
     <% else %>
     <li><a href="/welcome/login">Log In</a></li>
     <% end %>
-    <% if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4 %>
+    <% if @loggedinuser && @loggedinuser.authorizationlevel >= 4 %>
     <li><a href="/users">User Admin</a></li>
     <% end %>
 

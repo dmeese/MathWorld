@@ -3,11 +3,11 @@
 # Table name: documents
 #
 #  id                 :integer          not null, primary key
-#  FileName           :string(255)
-#  Description        :string(255)
+#  filename           :string(255)
+#  description        :string(255)
 #  contents           :binary
-#  Owner              :string(255)
-#  AuthorizationLevel :integer
+#  owner              :string(255)
+#  authorizationlevel :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :integer
@@ -38,9 +38,9 @@ class Document < ActiveRecord::Base
   #belongs_to is an ActiveRecord method which establishes a 
   #foreign key relationship, with this record as the child
   belongs_to :user, :foreign_key => :id
-  # Set up :FileName, :contents, :AuthorizationLevel, and :Description as 
+  # Set up :filename, :contents, :authorizationlevel, and :description as 
   # mass-assignable (such as during construction)
-  attr_accessible :FileName, :contents, :Description, :AuthorizationLevel
+  attr_accessible :filename, :contents, :description, :authorizationlevel
   mount_uploader :contents, DocumentUploader
   
   #Use ActiveRecord's built-in validators
@@ -55,8 +55,8 @@ class Document < ActiveRecord::Base
   before_save :remove_evil
 
   def remove_evil()
-    self.FileName = Stripify::stripify(self.FileName)
-    self.Description = Stripify::stripify(self.Description)
+    self.filename = Stripify::stripify(self.filename)
+    self.description = Stripify::stripify(self.description)
   end
 end
 

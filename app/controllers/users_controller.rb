@@ -11,7 +11,7 @@ class UsersController < ApplicationController
  
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
     	@user = User.new
     else 
        redirect_to '/'
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
 
         @user = User.new(params[:user])
         if @user.save
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
     else 
        redirect_to '/'
     end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
     	@user = User.find(params[:id])
     else 
        redirect_to '/'
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
     	@user = User.find(params[:id])
     else 
        redirect_to '/'
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
     #return render :text => params
        @user = User.find(params[:user][:id])
        if @user.update_attributes(params[:user])
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
 
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.AuthorizationLevel >= 4
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
        @user = User.find(params[:id])
        if (@user)
          @user.destroy

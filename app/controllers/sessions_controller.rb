@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
 	#if not, present them a message and redirect back to the login page.
 	#On success, remember them in the session.
 	def login
-		user = User.find_by_UserID(params[:session][:userid])
+		user = User.find_by_userid(params[:session][:userid])
 		if user && user.authenticate(params[:session][:password])
 			session[:remember_token] = user.id
-			if user.AuthorizationLevel == 1
+			if user.authorizationlevel == 1
 				redirect_to '/documents'
-			elsif user.AuthorizationLevel == 2
+			elsif user.authorizationlevel == 2
 				redirect_to '/documents'
-			elsif user.AuthorizationLevel > 2
+			elsif user.authorizationlevel > 2
 				redirect_to '/documents'
 			else
 				redirect_to '/'

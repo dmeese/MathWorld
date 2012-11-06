@@ -32,10 +32,10 @@ module ApplicationHelper
     return false if function <=0 # return false on out-of-range function codes
     return false if function >= MAX_FUNCTION    
 
-    if GUEST_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 1 then return true
-    elsif STUDENT_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 2 then return true
-    elsif INSTRUCTOR_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 3 then return true
-    elsif ADMIN_FUNCTIONS.include?(function) && user.AuthorizationLevel >= 4 then return true
+    if GUEST_FUNCTIONS.include?(function) && user.authorizationlevel >= 1 then return true
+    elsif STUDENT_FUNCTIONS.include?(function) && user.authorizationlevel >= 2 then return true
+    elsif INSTRUCTOR_FUNCTIONS.include?(function) && user.authorizationlevel >= 3 then return true
+    elsif ADMIN_FUNCTIONS.include?(function) && user.authorizationlevel >= 4 then return true
     end
 
     return false 

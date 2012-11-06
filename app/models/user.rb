@@ -3,11 +3,11 @@
 # Table name: users
 #
 #  id                 :integer          not null, primary key
-#  UserID             :string(255)
+#  userid             :string(255)
 #  password_digest    :string(255)
-#  UserName           :string(255)
-#  AuthorizationLevel :integer
-#  FaildAttempts      :integer
+#  username           :string(255)
+#  authorizationlevel :integer
+#  faildattempts      :integer
 #  created_on         :datetime
 #  updated_on         :datetime
 #
@@ -24,7 +24,7 @@ The has_secure_password method gives us strong hashing via the bcrypt gem with s
 class User < ActiveRecord::Base
 
   #Make all the fields mass-assignable (such as during construction)
-  attr_accessible :UserID, :UserName, :password, :password_confirmation, :AuthorizationLevel
+  attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
   #Verify that password was entered and is at least 6 characters long
   validates :password, presence: true, length: { minimum: 6 }
@@ -50,8 +50,8 @@ class User < ActiveRecord::Base
   before_save :remove_evil
 
   def remove_evil()
-    self.UserID = Stripify::stripify(self.UserID)
-    self.UserName = Stripify::stripify(self.UserName)
+    self.userid = Stripify::stripify(self.userid)
+    self.username = Stripify::stripify(self.username)
   end
 
 end
