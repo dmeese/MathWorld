@@ -9,7 +9,7 @@ class DocumentUploader < CarrierWave::Uploader::Base
   end
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -42,9 +42,18 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  version :thumb do
+    process :resize_to_limit => [50, 50]
+
+
+   # Will ned to add something like  for PDF support
+   #pdf = Magick::ImageList.new("doc.pdf")
+   #thumb = pdf.scale(300, 300)
+   #thumb.write "doc.png"
+
+   # Maybe support office in the future with http://stackoverflow.com/questions/3327441/how-to-convert-ppt-to-images-in-ruby
+   
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
