@@ -45,6 +45,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 
+# Use RMagick to process thumbnails of uploads
+gem 'rmagick'
+
 # Use CarrierWave for the file upload options
 gem 'carrierwave'
 
