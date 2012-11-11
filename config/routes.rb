@@ -1,6 +1,5 @@
 MathWorld::Application.routes.draw do
 
-  match "documents/search" => "documents#search"
   resources :documents
   
 =begin
