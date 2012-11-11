@@ -29,6 +29,13 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   # GET /documents/new.json
+  def search
+    # This would be the logic of the search function
+  end
+
+
+  # GET /documents/new
+  # GET /documents/new.json
   def new
 
 #Make sure only logged in users can manipulate content
