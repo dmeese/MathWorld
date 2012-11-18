@@ -18,7 +18,18 @@
       <th></th>
     </tr>
         <% if document.authorizationlevel == 1 %>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Owner</th>
+          <th>Created</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
        <tr>
+        <td><%= image_tag document.contents_url(:thumb).to_s %></td>
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
         <td><%= document.owner %></td>
@@ -33,6 +44,7 @@
 
         <% if @loggedinuser.authorizationlevel >= 3 %>
           <tr>
+            <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>
             <th>Public?</th>
@@ -43,6 +55,7 @@
             <th></th>
           </tr>
           <tr>
+            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
             <% if document.authorizationlevel == 1 %>
@@ -62,6 +75,7 @@
 
         <% elsif @loggedinuser.authorizationlevel == 2 %>
           <tr>
+            <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>
             <th>Public?</th>
@@ -71,7 +85,8 @@
             <th></th>
             <th></th>
           </tr>
-           <tr>
+          <tr>
+            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
             <% if document.authorizationlevel == 1 %>
