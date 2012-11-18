@@ -1,12 +1,43 @@
+<h3>Document Details</h3>
+<fieldset><legend><%= @document.filename %></legend>
+
 <p id="notice"><%= notice %></p>
 
-<p><b>Title:</b><%= @document.filename %></p>
 <p><b>Description:</b><%= @document.description %></p>
 <p><b>Authorization Level:</b><%= @document.authorizationlevel %></p>
 <p><b>Owner:</b><%= @document.owner %></p>
 <p><b>Created:</b><%= @document.created_at %></p>
 <p><b>Updated:</b><%= @document.updated_at %></p>
+<p><b>Rating: </b><%= @document.rating_avg %></p>
 <p><iframe src ="<%= @document.contents %>"> </iframe></p>
+
+<%if @loggedinuser %>
+        <% if document.authorizationlevel >= 2 %>
+
+			<%= form_for @document, :html => {:multipart => true} do |f| %>
+			  <% if @document.errors.any? %>
+			    <div id="error_explanation">
+			      <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+			      <ul>
+			      <% @document.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+			<br><br>
+			  <div class="field">
+			    <%= f.label :rating , "Your rating (1-10):" %><br />
+			    <%= f.text_area :rating %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit %>
+			  </div>
+			<% end %>
+        <% end %>
+<% end %> 
+
 
 
 <%= link_to 'Back', documents_path %>
+</fieldset>
