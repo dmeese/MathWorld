@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106170540) do
+ActiveRecord::Schema.define(:version => 20121112020323) do
+
+  create_table "document_histories", :force => true do |t|
+    t.integer  "document_id"
+    t.string   "document_name"
+    t.integer  "user_id"
+    t.string   "user_name"
+    t.string   "change_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "documents", :force => true do |t|
     t.string   "filename"
