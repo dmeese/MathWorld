@@ -17,7 +17,7 @@
 <% @documents.each do |document| %>
 
 <!-- Show Public documents only for Public -->
-    <%if @loggedinuser == nil %>
+    <%if @loggedinuser == nil || @loggedinuser.authorizationlevel == 1 %>
         <% if document.authorizationlevel == 1 %>
        <tr>
         <td><%= document.filename %></td>
