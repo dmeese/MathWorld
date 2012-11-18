@@ -1,6 +1,8 @@
+<h3>Document Details</h3>
+<fieldset><legend><%= @document.filename %></legend>
+
 <p id="notice"><%= notice %></p>
 
-<p><b>Title:</b><%= @document.filename %></p>
 <p><b>Description:</b><%= @document.description %></p>
 <p><b>Authorization Level:</b><%= @document.authorizationlevel %></p>
 <p><b>Owner:</b><%= @document.owner %></p>
@@ -10,3 +12,4 @@
 
 
 <%= link_to 'Back', documents_path %>
+</fieldset>
