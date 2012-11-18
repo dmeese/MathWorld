@@ -10,3 +10,47 @@
 
 
 <%= link_to 'Back', documents_path %>
+<hr />
+<table>
+	<tr>
+		<th>
+			Comments:
+		</th>
+	</tr>
+	<% @document.comments.each do |comment| %>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td>
+						<table>
+							<tr>
+								<td>
+									<%=comment.commenter%>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<%=comment.created_at%>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td>
+						<%=comment.body%>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<% end %>
+	<tr>
+		<td>
+			<%= form_tag({:controller => "documents", :action => "addcomment"}, "method" => "post") do %>
+			<%= text_area_tag(:newcomment, "", :size => "80x6") %>
+			<%= submit_tag("Add Comment") %>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<%= link_to 'Back', documents_path %>
