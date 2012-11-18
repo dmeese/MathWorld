@@ -11,7 +11,7 @@
     <% if @loggedinuser %>
     <li><a href="/sessions/logout">Log Out</a></li>
     <% else %>
-    <li><a href="/welcome/login">Log In</a></li>
+    <li><a href="/welcome/login">Log In/Register</a></li>
     <% end %>
     <% if @loggedinuser && @loggedinuser.authorizationlevel >= 4 %>
     <li><a href="/users">User Admin</a></li>

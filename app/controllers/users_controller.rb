@@ -11,10 +11,15 @@ class UsersController < ApplicationController
  
  #Make sure only logged in admins can manipulate users
 
-    if @loggedinuser && @loggedinuser.authorizationlevel >= 4
-    	@user = User.new
-    else 
-       redirect_to '/'
+    if @loggedinuser
+      if @loggedinuser.authorizationlevel >= 4
+        @user = User.new
+      else 
+         redirect_to '/'
+      end
+    else
+      @user=User.new
+      @user.authorizationlevel=1
     end
   end
 
@@ -32,6 +37,17 @@ class UsersController < ApplicationController
          redirect_to :action => 'index'
         else
          render 'new'
+        end
+    #Make sure only non-logged in users can register
+    elsif ! @loggedinuser
+        #Register a new user from data provided by the form.  If the save fails for
+        #some reason, redirect back to the form so that errors can be corrected and tried again.
+        @user = User.new(params[:user])
+	@user.authorizationlevel=1
+        if @user.save
+         redirect_to '/welcome/login'
+        else
+         render 'register'
         end
     else 
        redirect_to '/'

@@ -1,4 +1,4 @@
-<h3>Create a new user</h3>
+<h3>Register a new user</h3>
 
 <!-- When the submit button is pressed, the form will submit to the relative page createUserPage
 	the method for sending the data will be by http post
@@ -10,16 +10,12 @@
 -->
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages' %>
-	<fieldset><legend>User Details</legend>
+	<fieldset><legend>Enter User Details</legend>
 		<ul>
 			<li><%= f.label :userid , "User ID"%></li>
 			<li><%= f.text_field :userid %></li>
 			<li><%= f.label :username , "User Name"%></li>
 			<li><%= f.text_field :username %></li></li>
-			<%if @loggedinuser != nil %>
-			  <li><%= f.label :authorizationlevel, "Authorization Level (2 = student, 3 = teacher, 4 = admin)" %>
-			  <li><%= f.text_field :authorizationlevel %></li>
-                        <% end %>
 			<li><%= f.label :password %></li>
 			<li><%= f.password_field :password %></li>
 			<li><%= f.label :password_confirmation, "Confirm Password" %></li>
