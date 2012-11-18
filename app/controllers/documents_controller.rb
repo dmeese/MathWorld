@@ -76,6 +76,11 @@ class DocumentsController < ApplicationController
   
       respond_to do |format|
         if @document.save
+          @history = DocumentHistory.create(:change_type => "CREATE", 
+                                            :document_name => @document.filename, 
+                                            :document_id => @document.id,
+                                            :user_id => @document.user_id,
+                                            :user_name => @document.owner)
           format.html { redirect_to @document, notice: 'Document was successfully created.' }
           format.json { render json: @document, status: :created, location: @document }
         else
@@ -99,6 +104,11 @@ class DocumentsController < ApplicationController
 
       respond_to do |format|
         if @document.update_attributes(params[:document])
+          @history = DocumentHistory.create(:change_type => "MODIFY", 
+                                            :document_name => @document.filename, 
+                                            :document_id => @document.id,
+                                            :user_id => @document.user_id,
+                                            :user_name => @document.owner)
           format.html { redirect_to @document, notice: 'Document was successfully updated.' }
           format.json { head :no_content }
         else
@@ -120,6 +130,11 @@ class DocumentsController < ApplicationController
     if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.find(params[:id])
       @document.destroy
+      @history = DocumentHistory.create(:change_type => "DELETE", 
+                                        :document_name => @document.filename, 
+                                        :document_id => @document.id,
+                                        :user_id => @document.user_id,
+                                        :user_name => @document.owner)
 
       respond_to do |format|
         format.html { redirect_to documents_url }
