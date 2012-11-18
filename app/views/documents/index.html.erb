@@ -3,26 +3,24 @@
 
 <fieldset><legend>Documents</legend>
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>AuthorizationLevel</th>
-    <th>Owner</th>
-    <th>Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @documents.each do |document| %>
 
 <!-- Show Public documents only for Public -->
     <%if @loggedinuser == nil || @loggedinuser.authorizationlevel == 1 %>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Owner</th>
+      <th>Created</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
         <% if document.authorizationlevel == 1 %>
        <tr>
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
-        <td><%= document.authorizationlevel %></td>
         <td><%= document.owner %></td>
         <td><%= document.created_at %></td>
         <td><%= link_to 'Show', document %></td>
@@ -35,9 +33,23 @@
 
         <% if @loggedinuser.authorizationlevel >= 3 %>
           <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Public?</th>
+            <th>Owner</th>
+            <th>Created</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
-            <td><%= document.authorizationlevel %></td>
+            <% if document.authorizationlevel == 1 %>
+              <td>Y</td>
+            <% else %>
+              <td>N</td>
+            <% end %>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>
@@ -49,10 +61,24 @@
     <!-- Show all documents only for Students -->
 
         <% elsif @loggedinuser.authorizationlevel == 2 %>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Public?</th>
+            <th>Owner</th>
+            <th>Created</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
            <tr>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
-            <td><%= document.authorizationlevel %></td>
+            <% if document.authorizationlevel == 1 %>
+              <td>Y</td>
+            <% else %>
+              <td>N</td>
+            <% end %>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>
