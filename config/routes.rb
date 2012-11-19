@@ -2,6 +2,7 @@ MathWorld::Application.routes.draw do
 
   match "documents/search" => "documents#search"
   match "documents/:id/comment" => "documents#addcomment", :via => [:post]
+  match "documents/:id/rating" => "documents#addrating", :via => [:post]
   resources :documents
   
 =begin

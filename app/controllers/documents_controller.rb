@@ -10,7 +10,23 @@ class DocumentsController < ApplicationController
       @comment = Comment.create(:document_id => @document.id,
                                 :body => params[:newcomment],
                                 :commenter => @loggedinuser.username)
-      redirect_to :back
+      redirect_to '/documents/'+params[:id]
+    else
+      redirect_to '/'
+    end
+  end
+
+  # POST /documents/1/rating
+  def addrating
+    @document = Document.find(params[:id])
+
+    #Make sure only logged in users can manipulate content
+    #Note that students can update ratings
+
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 2
+      @document.rating = params[:document][:rating]
+      @document.save 
+      redirect_to '/documents/'+params[:id]
     else
       redirect_to '/'
     end
@@ -116,7 +132,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.authorizationlevel >= 2
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
       @document = Document.find(params[:id])
 
       respond_to do |format|
