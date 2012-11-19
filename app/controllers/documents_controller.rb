@@ -64,6 +64,13 @@ class DocumentsController < ApplicationController
   # GET /documents/new.json
   def search
     # This would be the logic of the search function
+    if params[:term]
+      query = params[:term]
+      @documents = Document.where("filename like ? or description like ?", "%#{query}%", "%#{query}%") 
+    else
+      @documents = Document.where("1=0")
+    end
+
   end
 
 
