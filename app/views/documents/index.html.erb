@@ -8,15 +8,6 @@
 
 <!-- Show Public documents only for Public -->
     <%if @loggedinuser == nil || @loggedinuser.authorizationlevel == 1 %>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Rating</th>
-      <th>Owner</th>
-      <th>Created</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
         <% if document.authorizationlevel == 1 %>
         <tr>
@@ -34,7 +25,11 @@
         <td><%= image_tag document.contents_url(:thumb).to_s %></td>
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
-        <td><%= document.rating_avg %></td>
+        <td><% if document.rating_count.to_i != 0 %>
+          <%= document.rating_avg.to_f/document.rating_count.to_i %>
+        <% else %>
+          Unrated
+        <% end %></td>
         <td><%= document.owner %></td>
         <td><%= document.created_at %></td>
         <td><%= link_to 'Show', document %></td>
@@ -67,7 +62,11 @@
             <% else %>
               <td>N</td>
             <% end %>
-            <td><%= document.rating_avg %></td>
+            <td><% if document.rating_count.to_i != 0 %>
+              <%= document.rating_avg.to_f/document.rating_count.to_i %>
+            <% else %>
+              Unrated
+            <% end %></td>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>
@@ -100,7 +99,11 @@
             <% else %>
               <td>N</td>
             <% end %>
-            <td><%= document.rating_avg %></td>
+            <td><% if document.rating_count.to_i != 0 %>
+              <%= document.rating_avg.to_f/document.rating_count.to_i %>
+            <% else %>
+              Unrated
+            <% end %></td>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>

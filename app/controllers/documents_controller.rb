@@ -99,7 +99,7 @@ class DocumentsController < ApplicationController
 
 #Make sure only logged in users can manipulate content
 
-    if @loggedinuser && @loggedinuser.authorizationlevel >= 3
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 2
       @document = Document.find(params[:id])
 
       respond_to do |format|

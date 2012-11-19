@@ -40,7 +40,8 @@ class Document < ActiveRecord::Base
   belongs_to :user, :foreign_key => :id
   # Set up :filename, :contents, :authorizationlevel, and :description as 
   # mass-assignable (such as during construction)
-  attr_accessible :filename, :contents, :description, :authorizationlevel
+  attr_accessible :filename, :contents, :description, :authorizationlevel, :rating
+  attr_accessor :rating
   mount_uploader :contents, DocumentUploader
   
   #Use ActiveRecord's built-in validators
@@ -50,8 +51,17 @@ class Document < ActiveRecord::Base
       :maximum => 0.125.megabytes.to_i 
     } 
     
-    #set up remove_evil as an event callback, to be called before
-    #the record is committed to the data repository.
+  # setup calculate rating_average as an event call back, to be
+  # called before the record is commited to the data repository
+  before_save :calc_rating
+
+  def calc_rating()
+   self.rating_avg = self.rating_avg.to_i + self.rating.to_i
+   self.rating_count = self.rating_count.to_i + 1
+  end
+
+  #set up remove_evil as an event callback, to be called before
+  #the record is committed to the data repository.
   before_save :remove_evil
 
   def remove_evil()
