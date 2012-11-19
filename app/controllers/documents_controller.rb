@@ -1,4 +1,21 @@
 class DocumentsController < ApplicationController
+  # POST /documents/1/comment
+  def addcomment
+    @document = Document.find(params[:id])
+
+    #Make sure only logged in users can manipulate content
+    #Note that students can leave comments
+
+    if @loggedinuser && @loggedinuser.authorizationlevel >= 2
+      @comment = Comment.create(:document_id => @document.id,
+                                :body => params[:newcomment],
+                                :commenter => @loggedinuser.username)
+      redirect_to :back
+    else
+      redirect_to '/'
+    end
+  end
+
   # GET /documents
   # GET /documents.json
   def index

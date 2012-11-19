@@ -13,6 +13,14 @@
 
 ActiveRecord::Schema.define(:version => 20121118161853) do
 
+  create_table "comments", :force => true do |t|
+    t.string   "body"
+    t.integer  "document_id"
+    t.string   "commenter"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "document_histories", :force => true do |t|
     t.integer  "document_id"
     t.string   "document_name"

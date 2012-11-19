@@ -38,11 +38,16 @@ class Document < ActiveRecord::Base
   #belongs_to is an ActiveRecord method which establishes a 
   #foreign key relationship, with this record as the child
   belongs_to :user, :foreign_key => :id
+
   # Set up :filename, :contents, :authorizationlevel, and :description as 
   # mass-assignable (such as during construction)
   attr_accessible :filename, :contents, :description, :authorizationlevel, :rating
   attr_accessor :rating
   mount_uploader :contents, DocumentUploader
+  
+  #Sets up foreign key relationship with the comments table/Comment model object.
+  #This object is the parent record; the foreign key field in comments defaults to document_id.
+  has_many :comments
   
   #Use ActiveRecord's built-in validators
   validates :contents,
