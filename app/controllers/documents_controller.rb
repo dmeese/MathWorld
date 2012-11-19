@@ -31,6 +31,18 @@ class DocumentsController < ApplicationController
   # GET /documents/new.json
   def search
     # This would be the logic of the search function
+def search
+      document.owner = params[:term]
+      #@paginator, @documents = paginate :document,
+      #:per_page => 10,
+      #:order => 'document.owner',
+      #:conditions => ["owner = ? or filename= ?, name ]
+      #:conditions => "document.owner = '#{owner}'"
+      # :conditions => ["owner = ?", name]
+      #@page_title = "List of document  #{owner}"
+      #render :action => 'index'
+end
+
   end
 
 
