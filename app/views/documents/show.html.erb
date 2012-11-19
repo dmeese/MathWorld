@@ -4,13 +4,21 @@
 <p id="notice"><%= notice %></p>
 
 <p><b>Description:</b><%= @document.description %></p>
-<p><b>Authorization Level:</b><%= @document.authorizationlevel %></p>
+<p><b>Authorization Level:</b>
+<% if @document.authorizationlevel == 0 %>
+  Private
+<% elsif @document.authorizationlevel == 1 %>
+  Public
+<% else %>
+  UNKNOWN!!!
+<% end %>
+</p>
 <p><b>Owner:</b><%= @document.owner %></p>
 <p><b>Created:</b><%= @document.created_at %></p>
 <p><b>Updated:</b><%= @document.updated_at %></p>
 <p><b>Rating: </b>
 <% if @document.rating_count.to_i != 0 %>
-  <%= @document.rating_avg.to_f/@document.rating_count.to_i %></p>
+  <%= (@document.rating_avg.to_f/@document.rating_count.to_i).round(2) %></p>
 <% else %>
   Unrated</p>
 <% end %>

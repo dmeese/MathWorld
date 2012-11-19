@@ -26,7 +26,7 @@
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
         <td><% if document.rating_count.to_i != 0 %>
-          <%= document.rating_avg.to_f/document.rating_count.to_i %>
+          <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
         <% else %>
           Unrated
         <% end %></td>
@@ -63,7 +63,7 @@
               <td>N</td>
             <% end %>
             <td><% if document.rating_count.to_i != 0 %>
-              <%= document.rating_avg.to_f/document.rating_count.to_i %>
+              <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
             <% else %>
               Unrated
             <% end %></td>
@@ -100,7 +100,7 @@
               <td>N</td>
             <% end %>
             <td><% if document.rating_count.to_i != 0 %>
-              <%= document.rating_avg.to_f/document.rating_count.to_i %>
+              <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
             <% else %>
               Unrated
             <% end %></td>
