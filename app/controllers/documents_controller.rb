@@ -65,8 +65,8 @@ class DocumentsController < ApplicationController
   def search
     # This would be the logic of the search function
     if params[:term]
-      query = params[:term]
-      @documents = Document.where("filename like ? or description like ?", "%#{query}%", "%#{query}%") 
+      query = params[:term].downcase
+      @documents = Document.where("lower(filename) like ? or lower(description) like ?", "%#{query}%", "%#{query}%") 
     else
       @documents = Document.where("1=0")
     end
