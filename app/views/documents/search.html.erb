@@ -1,41 +1,48 @@
-<h3>Editing document</h3>
+<h3>Search for Documents</h3>
 <fieldset><legend>Search</legend>
 
-This is the search view 
-
+Enter the search term you wish to check file names and desciption for...
   
 <h1><%= @page_title %></h1>
 	<p><%= form_tag({:controller => 'documents',
 		:action => 'search'},
 		{:method => :get}) %>
-		<label for="term">Find Documents :</label>
+		<label for="term">Find Documents with:</label>
 		<%= text_field_tag "term" -%>
 		<%= submit_tag 'Go' %>
 		</form></p><br />
 </fieldset>
 
 <fieldset><legend>Results</legend>
+
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>AuthorizationLevel</th>
-    <th>Owner</th>
-    <th>Created</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @documents.each do |document| %>
 
 <!-- Show Public documents only for Public -->
-    <%if @loggedinuser == nil %>
+    <%if @loggedinuser == nil || @loggedinuser.authorizationlevel == 1 %>
+    </tr>
         <% if document.authorizationlevel == 1 %>
+        <tr>
+          <th>Thumbnail</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Rating</th>
+          <th>Owner</th>
+          <th>Created</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
        <tr>
+        <td><%= image_tag document.contents_url(:thumb).to_s %></td>
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
-        <td><%= document.authorizationlevel %></td>
+        <td><% if document.rating_count.to_i != 0 %>
+          <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
+        <% else %>
+          Unrated
+        <% end %></td>
         <td><%= document.owner %></td>
         <td><%= document.created_at %></td>
         <td><%= link_to 'Show', document %></td>
@@ -48,9 +55,31 @@ This is the search view
 
         <% if @loggedinuser.authorizationlevel >= 3 %>
           <tr>
+            <th>Thumbnail</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Public?</th>
+            <th>Rating</th>
+            <th>Owner</th>
+            <th>Created</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
-            <td><%= document.authorizationlevel %></td>
+            <% if document.authorizationlevel == 1 %>
+              <td>Y</td>
+            <% else %>
+              <td>N</td>
+            <% end %>
+            <td><% if document.rating_count.to_i != 0 %>
+              <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
+            <% else %>
+              Unrated
+            <% end %></td>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>
@@ -62,10 +91,32 @@ This is the search view
     <!-- Show all documents only for Students -->
 
         <% elsif @loggedinuser.authorizationlevel == 2 %>
-           <tr>
+          <tr>
+            <th>Thumbnail</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Public?</th>
+            <th>Rating</th>
+            <th>Owner</th>
+            <th>Created</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
-            <td><%= document.authorizationlevel %></td>
+            <% if document.authorizationlevel == 1 %>
+              <td>Y</td>
+            <% else %>
+              <td>N</td>
+            <% end %>
+            <td><% if document.rating_count.to_i != 0 %>
+              <%= (document.rating_avg.to_f/document.rating_count.to_i).round(2) %></p>
+            <% else %>
+              Unrated
+            <% end %></td>
             <td><%= document.owner %></td>
             <td><%= document.created_at %></td>
             <td><%= link_to 'Show', document %></td>
