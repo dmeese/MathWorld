@@ -3,4 +3,13 @@
 
 This is the search view 
 
+  
+<h1><%= @page_title %></h1>
+	<p><%= form_tag({:controller => 'documents',
+		:action => 'search'},
+		{:method => :get}) %>
+		<label for="term">Find Documents :</label>
+		<%= text_field_tag "term" -%>
+		<%= submit_tag 'Go' %>
+		</form></p><br />
 </fieldset>
