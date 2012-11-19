@@ -13,3 +13,67 @@ This is the search view
 		<%= submit_tag 'Go' %>
 		</form></p><br />
 </fieldset>
+
+<fieldset><legend>Results</legend>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>AuthorizationLevel</th>
+    <th>Owner</th>
+    <th>Created</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @documents.each do |document| %>
+
+<!-- Show Public documents only for Public -->
+    <%if @loggedinuser == nil %>
+        <% if document.authorizationlevel == 1 %>
+       <tr>
+        <td><%= document.filename %></td>
+        <td><%= document.description %></td>
+        <td><%= document.authorizationlevel %></td>
+        <td><%= document.owner %></td>
+        <td><%= document.created_at %></td>
+        <td><%= link_to 'Show', document %></td>
+      </tr>
+        <% end %>
+    <% end %> 
+
+<!-- Show , Edit, Delete all documents for Admins and Teachers -->
+    <% if @loggedinuser %>
+
+        <% if @loggedinuser.authorizationlevel >= 3 %>
+          <tr>
+            <td><%= document.filename %></td>
+            <td><%= document.description %></td>
+            <td><%= document.authorizationlevel %></td>
+            <td><%= document.owner %></td>
+            <td><%= document.created_at %></td>
+            <td><%= link_to 'Show', document %></td>
+            <td><%= link_to 'Edit', edit_document_path(document) %></td>
+            <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+     
+
+    <!-- Show all documents only for Students -->
+
+        <% elsif @loggedinuser.authorizationlevel == 2 %>
+           <tr>
+            <td><%= document.filename %></td>
+            <td><%= document.description %></td>
+            <td><%= document.authorizationlevel %></td>
+            <td><%= document.owner %></td>
+            <td><%= document.created_at %></td>
+            <td><%= link_to 'Show', document %></td>
+          </tr>
+        <% end %> 
+    <% end %> 
+
+
+<% end %>
+</table>
+</fieldset>
