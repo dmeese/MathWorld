@@ -27,7 +27,11 @@ class User < ActiveRecord::Base
   attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
   #Verify that password was entered and is at least 6 characters long
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, :if => :validate_password?
+
+  def validate_password?
+    password.present? 
+  end
   
   #The next two methods come from ActiveRecord.  They provide for the use
   #of cleartext passwords from the web app, with confirmation, and a digest being

@@ -18,7 +18,7 @@
 			<li><%= f.label :username , "User Name"%></li>
 			<li><%= f.text_field :username %></li></li>
 			<li><%= f.label :authorizationlevel, "Authorization Level (2 = student, 3 = teacher, 4 = admin)" %>
-			<li><%= f.text_field :authorizationlevel %></li>
+			<li><%= f.select :authorizationlevel, 2..4 %></li>
 			<li><%= f.label :password %></li>
 			<li><%= f.password_field :password %></li>
  			<li><%= f.label :password_confirmation, "Confirm Password" %></li>
