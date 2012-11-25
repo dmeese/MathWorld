@@ -2,6 +2,8 @@
 SessionsController handles login and logout, as that is tightly entwined 
 with session setup and teardown.  On successful login, we also redirect
 to a reasonable page.
+
+Added session[:last_seen] to address bug #12
 =end
 class SessionsController < ApplicationController
 

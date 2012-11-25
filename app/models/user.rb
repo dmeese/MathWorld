@@ -26,10 +26,9 @@ class User < ActiveRecord::Base
   #Make all the fields mass-assignable (such as during construction)
   attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
-  #Verify that User ID is present - we gotta have this
-  #Also do not allow duplicate user ids.
-  validates :userid, presence: true
-  validates_uniqueness_of :userid
+  validates :userid, presence: true  #Verify that User ID is present - we gotta have this - Bug #7
+  validates_uniqueness_of :userid    #Also do not allow duplicate user ids - Bug #15
+  validate :userid_has_no_nonword_characters # see function definition - Bug #11
   
   #Verify that password was entered and is at least 8 characters long
   validates :password, presence: true, length: { minimum: 8 }, :if => :validate_password?
@@ -52,6 +51,8 @@ class User < ActiveRecord::Base
     At least one upper case character
     At least one digit
     At least one non-alpha, non-digit printable character
+
+    Addresses Bug #5
 =end
   def password_strong_enough
     return unless validate_password?
@@ -72,7 +73,17 @@ class User < ActiveRecord::Base
     end
   end
 
-  
+=begin
+  Test for userid validity.  A valid userid only consists of alphanumeric characters (including underscore)
+  ActiveRecord's validates_format_of doesn't quite do what we want,
+  so use a custom validation method
+
+  Addresses Bug #11
+=end
+  def userid_has_no_nonword_characters
+    errors.add(:userid, "has invalid characters.  Please only uses letters, numbers, and underscores") if userid.match(/\W+/)
+  end
+
   #The next two methods come from ActiveRecord.  They provide for the use
   #of cleartext passwords from the web app, with confirmation, and a digest being
   #saved in the database.  The digesting is performed using BCrypt.

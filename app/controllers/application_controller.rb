@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   #session[:remember_token] is used to store the user id (the real underlying id, an integer)
   #for subsequent calls.  "protect_from_forgery" above tells Rails to use it's own system
   #to prevent forging the session values.
-  #session[:last_seen] provides for timing out an inactive session
+  #session[:last_seen] provides for timing out an inactive session - Bug #12
   def getUser
     if session[:remember_token] && session[:last_seen] && session[:last_seen] >= 15.minutes.ago
       @loggedinuser ||= User.find_by_id(session[:remember_token])
