@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   #Make all the fields mass-assignable (such as during construction)
   attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
+  #Verify that User ID is present - we gotta have this
+  validates :userid, presence: true
+  
   #Verify that password was entered and is at least 8 characters long
   validates :password, presence: true, length: { minimum: 8 }, :if => :validate_password?
   validate :password_strong_enough
@@ -50,7 +53,7 @@ class User < ActiveRecord::Base
 =end
   def password_strong_enough
     return unless validate_password?
-    
+
     count_symbols = /\W/.match(password) ? password.scan(/\W/).length : 0
     count_digits = /\d/.match(password) ? password.scan(/\d/).length : 0
     count_lowers = /[[:lower:]]/.match(password) ? password.scan(/[[:lower:]]/).length : 0
