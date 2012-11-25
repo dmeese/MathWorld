@@ -60,8 +60,8 @@ class DocumentsController < ApplicationController
     end
   end
 
-  # GET /documents/new
-  # GET /documents/new.json
+  # GET /documents/search
+  # GET /documents/search.json
   def search
     # This would be the logic of the search function
     if params[:term]

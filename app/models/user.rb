@@ -26,12 +26,47 @@ class User < ActiveRecord::Base
   #Make all the fields mass-assignable (such as during construction)
   attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
-  #Verify that password was entered and is at least 6 characters long
-  validates :password, presence: true, length: { minimum: 6 }, :if => :validate_password?
+  #Verify that password was entered and is at least 8 characters long
+  validates :password, presence: true, length: { minimum: 8 }, :if => :validate_password?
+  validate :password_strong_enough
 
+=begin
+  Test for whether we should validate the password.  We only need to validate if this is
+  a new user or if the password is changed
+=end
   def validate_password?
-    password.present? 
+    password.present? || new_record?
   end
+  
+=begin
+  Test for password strength.  ActiveRecord doesn't have a built in validator for this,
+  so use a custom validation method
+
+  Right now we just check for three of the four following criteria:
+    At least one lower case character
+    At least one upper case character
+    At least one digit
+    At least one non-alpha, non-digit printable character
+=end
+  def password_strong_enough
+    return unless validate_password?
+    
+    count_symbols = /\W/.match(password) ? password.scan(/\W/).length : 0
+    count_digits = /\d/.match(password) ? password.scan(/\d/).length : 0
+    count_lowers = /[[:lower:]]/.match(password) ? password.scan(/[[:lower:]]/).length : 0
+    count_uppers = /[[:upper:]]/.match(password) ? password.scan(/[[:upper:]]/).length : 0
+
+    conditions = 0
+    conditions += 1 if count_symbols >= 1
+    conditions += 1 if count_digits >= 1
+    conditions += 1 if count_lowers >= 1
+    conditions += 1 if count_uppers >= 1
+
+    if conditions < 3
+      errors.add(:password, "must contain 3 of the following: 1 lower case letter, 1 upper case letter, 1 digit, 1 non-letter non-number.")
+    end
+  end
+
   
   #The next two methods come from ActiveRecord.  They provide for the use
   #of cleartext passwords from the web app, with confirmation, and a digest being
