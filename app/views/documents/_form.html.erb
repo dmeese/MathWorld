@@ -16,11 +16,11 @@
 <br><br>
   <div class="field">
     <%= f.label :filename , "File Name" %><br />
-    <%= f.text_area :filename %>
+    <%= f.text_area :filename, :maxlength => 255 %>
   </div>
   <div class="field">
     <%= f.label :description, "Description" %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :maxlength => 255 %>
   </div>
   <div class="field">
     <%= f.label :contents %><br />

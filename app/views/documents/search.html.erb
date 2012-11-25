@@ -8,7 +8,7 @@ Enter the search term you wish to check file names and desciption for...
 		:action => 'search'},
 		{:method => :get}) %>
 		<label for="term">Find Documents with:</label>
-		<%= text_field_tag "term" -%>
+		<%= text_field_tag "term", nil, :maxlength => 25 %>
 		<%= submit_tag 'Go' %>
 		</form></p><br />
 </fieldset>

@@ -3,6 +3,7 @@ module Stripify
 
 def self.stripify(input_string)
 	output = input_string.tr(%q{;`"'}, '') 
+	output.gsub('--','- - ') # render -- safe as well
 	return output 
 end
 

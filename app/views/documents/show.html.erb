@@ -77,7 +77,7 @@
 	<tr>
 		<td>
 			<%= form_tag({:controller => "documents", :action => "addcomment"}, "method" => "post") do %>
-			<%= text_area_tag(:newcomment, "", :size => "80x6") %>
+			<%= text_area_tag(:newcomment, "", :size => "80x6", :maxlength => 500) %>
 			<%= submit_tag("Add Comment") %>
 			<% end %>
 		</td>
