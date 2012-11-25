@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
   attr_accessible :userid, :username, :password, :password_confirmation, :authorizationlevel
   
   #Verify that User ID is present - we gotta have this
+  #Also do not allow duplicate user ids.
   validates :userid, presence: true
+  validates_uniqueness_of :userid
   
   #Verify that password was entered and is at least 8 characters long
   validates :password, presence: true, length: { minimum: 8 }, :if => :validate_password?
