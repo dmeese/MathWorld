@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_userid(params[:session][:userid])
 		if user && user.authenticate(params[:session][:password])
 			session[:remember_token] = user.id
+			session[:last_seen] = Time.now
 			if user.authorizationlevel == 1
 				redirect_to '/documents'
 			elsif user.authorizationlevel == 2
@@ -34,6 +35,7 @@ class SessionsController < ApplicationController
 	#Remove the user from the session and send them to the home page.
 	def logout
 		session[:remember_token] = nil
+		session[:last_seen] = nil
 		redirect_to '/'
 	end
 end
