@@ -7,8 +7,11 @@ Added session[:last_seen] to address bug #12
 =end
 class SessionsController < ApplicationController
 
-	#showing the login page requires no special action; just allow the page to show
+	#if a logged in user pastes teh login page url in, it will direct them back to douments.
 	def showsignin
+		if @loggedinuser &&
+			redirect_to '/documents'
+		end
 	end
 
 	#after entering login credentials, see if we can't authenticate the user.
