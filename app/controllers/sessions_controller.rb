@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
 	#if a logged in user pastes teh login page url in, it will direct them back to douments.
 	def showsignin
-		if @loggedinuser &&
+		if @loggedinuser 
 			redirect_to '/documents'
 		end
 	end
