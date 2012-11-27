@@ -11,6 +11,8 @@
 <%= form_for(@user) do |f| %>
 	<%= render 'shared/error_messages' %>
 	<fieldset><legend>User Details</legend>
+		<p>Please note that you will not be able to see or upload restricted content until after your account has been validated at the appropriate access level.</p>
+		<br>
 		<ul>
 			<li><%= f.label :userid , "User ID"%></li>
 			<li><%= f.text_field :userid %></li>
