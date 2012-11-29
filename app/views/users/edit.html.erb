@@ -14,15 +14,15 @@
 		<ul>
 			<li><%= f.hidden_field :id %></li>
 			<li><%= f.label :userid , "User ID"%></li>
-			<li><%= f.text_field :userid %></li>
+			<li><%= f.text_field :userid, :maxlength => 25 %></li>
 			<li><%= f.label :username , "User Name"%></li>
-			<li><%= f.text_field :username %></li></li>
+			<li><%= f.text_field :username, :maxlength => 100 %></li></li>
 			<li><%= f.label :authorizationlevel, "Authorization Level" %>
 			<li><%= f.select :authorizationlevel, [['Student', 2], ['Teacher', 3], ['Admin', 4]] %></li>
 			<li><%= f.label :password %></li>
-			<li><%= f.password_field :password %></li>
+			<li><%= f.password_field :password, :maxlength => 25 %></li>
  			<li><%= f.label :password_confirmation, "Confirm Password" %></li>
-			<li><%= f.password_field :password_confirmation %></li>
+			<li><%= f.password_field :password_confirmation, :maxlength => 25 %></li>
 			<br>
 			<li><%= f.submit "Save" %></li>
 		</ul>

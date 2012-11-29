@@ -5,9 +5,9 @@
 <h3>Sign in</h3>
 <%= form_for(:session, url: sessions_path) do |f| %>
   <%= f.label :userid %>
-  <%= f.text_field :userid %>
+  <%= f.text_field :userid, :maxlength => 25 %>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password, :maxlength => 25 %>
 
   <%= f.submit "Log in" %>
 <p>
