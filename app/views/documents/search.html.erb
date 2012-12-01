@@ -24,7 +24,6 @@ Enter the search term you wish to check file names and desciption for...
     </tr>
         <% if document.authorizationlevel == 1 %>
         <tr>
-          <th>Thumbnail</th>
           <th>Title</th>
           <th>Description</th>
           <th>Rating</th>
@@ -35,7 +34,6 @@ Enter the search term you wish to check file names and desciption for...
           <th></th>
         </tr>
        <tr>
-        <td><%= image_tag document.contents_url(:thumb).to_s %></td>
         <td><%= document.filename %></td>
         <td><%= document.description %></td>
         <td><% if document.rating_count.to_i != 0 %>
@@ -55,7 +53,6 @@ Enter the search term you wish to check file names and desciption for...
 
         <% if @loggedinuser.authorizationlevel >= 3 %>
           <tr>
-            <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>
             <th>Public?</th>
@@ -67,7 +64,6 @@ Enter the search term you wish to check file names and desciption for...
             <th></th>
           </tr>
           <tr>
-            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
             <% if document.authorizationlevel == 1 %>
@@ -92,7 +88,6 @@ Enter the search term you wish to check file names and desciption for...
 
         <% elsif @loggedinuser.authorizationlevel == 2 %>
           <tr>
-            <th>Thumbnail</th>
             <th>Title</th>
             <th>Description</th>
             <th>Public?</th>
@@ -104,7 +99,6 @@ Enter the search term you wish to check file names and desciption for...
             <th></th>
           </tr>
           <tr>
-            <td><%= image_tag document.contents_url(:thumb).to_s %></td>
             <td><%= document.filename %></td>
             <td><%= document.description %></td>
             <% if document.authorizationlevel == 1 %>
